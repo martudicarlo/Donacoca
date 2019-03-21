@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//Pruebas push git
+
 package aplicacion.controlador;
 
 import aplicacion.modelo.comandos.FactoriaDeComandos;
