@@ -81,11 +81,11 @@
                                                 <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
                                             </form>
                                             <p><%=p.getAnio()%></p>
-                                            <p>$ <%=String.format("%.2f",p.getPrecioAlquiler())%> - $ <%=String.format("%.2f",p.getPrecioVenta())%></p>
+                                            <p>$ <%=String.format("%.2f",p.getPrecioVenta())%></p>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="AgregarLineaComando"/>
                                                 <input type="hidden" name="idPelicula" value="<%=p.getIdPelicula()%>"/>
-                                                <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Alquilar">
+                                                
                                                 <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Comprar">
                                             </form>
                                         </div>
@@ -99,11 +99,11 @@
                                                     <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
                                                 </form>
                                                 <p><%=p.getAnio()%></p>
-                                                <p>$ <%=String.format("%.2f",p.getPrecioAlquiler())%> - $ <%=String.format("%.2f",p.getPrecioVenta())%></p>
+                                                <p> <%=String.format("%.2f",p.getPrecioVenta())%></p>
                                                 <form action="Controlador" method="post">
                                                     <input type="hidden"  name="form" value="AgregarLineaComando"/>
                                                     <input type="hidden" name="idPelicula" value="<%=p.getIdPelicula()%>"/>
-                                                    <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Alquilar">
+                                                   
                                                     <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Comprar">
                                                 </form>
                                             </div>
@@ -115,7 +115,7 @@
                         </div>
                         <form action="Controlador" method="post">  
                             <ul class="pagination">
-                                <%for(int j=1;j<=cantPaginas;j++){%>                                                                                                
+                                <%for(int j=1;j<=cantPaginas;j++){%>                                                                                                 
                                 <li>
                                     <input type="submit" <%if((Integer)session.getAttribute("pActual")==j){%>class="active" disabled<%}%> name="paginacionActual" value="<%=j%>">
                                 </li>
