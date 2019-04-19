@@ -37,7 +37,7 @@
                         <form action="Controlador" method="post" class="formLogo">
                             <input type="hidden"  name="form" value="RedireccionarComando"/>
                             <input type="hidden"  name="destino" value="/home.jsp"/>
-                            <img src="./imagenes/logo.jpg" onclick="submit()">
+                            <img src="./imagenes/doña-coca22.jpg" onclick="submit()">
                         </form>
                    </div>               
                 </div>
@@ -143,7 +143,7 @@
                             <li>
                                 <a>
                                     <form action="Controlador" method="post">                                
-                                        <input class="<%if(request.getRequestURI().contains("/cartelera.jsp")){%>active<%}%>" type="submit" name="pagina" value="Peliculas" >
+                                        <input class="<%if(request.getRequestURI().contains("/cartelera.jsp")){%>active<%}%>" type="submit" name="pagina" value="Tortas" >
                                         <input type="hidden"  name="tipo" value="todas"/>
                                         <input type="hidden"  name="form" value="PeliculasComando"/>
                                     </form>
@@ -154,7 +154,7 @@
                                     <form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="RedireccionarComando"/>
                                         <input type="hidden"  name="destino" value="/nosotros.jsp"/>
-                                        <input class="<%if(request.getRequestURI().contains("/nosotros.jsp")){%>active<%}%>" type="submit" name="pagina" value="Nosotros" >
+                                        <input class="<%if(request.getRequestURI().contains("/nosotros.jsp")){%>active<%}%>" type="submit" name="pagina" value="Nosotras" >
                                     </form>
                                 </a> 
                             </li>
@@ -208,7 +208,7 @@
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
                         <form action="Controlador" method="post">
-                            <input type="text" name="nombrePelicula" placeholder="Nombre pelicula">
+                            <input type="text" name="nombrePelicula" placeholder="Nombre Torta">
                             <input type="hidden" name="tipo" value="buscador">
                             <input type="hidden" name="form" value="PeliculasComando" onchange="submit()">
                         </form>
