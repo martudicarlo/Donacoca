@@ -1,4 +1,4 @@
-<%@page import="aplicacion.modelo.entidades.Genero"%>
+<%@page import="aplicacion.modelo.entidades.Variedad"%>
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -10,10 +10,10 @@
         <jsp:include page="header.jsp"/>
         <%@page import="aplicacion.modelo.entidades.Pelicula"%>
         <%!ArrayList<Pelicula> listaCartelera = null;%>
-        <%!ArrayList<Genero> listaGeneros = null;%>
-        <%listaGeneros = (ArrayList)session.getAttribute("generos");%>
+        <%!ArrayList<Variedad> listaVariedades = null;%>
+        <%listaVariedades = (ArrayList)session.getAttribute("variedades");%>
         <%int cantPaginas = 0;%>
-        <%if(session.getAttribute("generoObtenido")!=null)
+        <%if(session.getAttribute("variedadObtenido")!=null)
         {
             if(session.getAttribute("pelisEncontradas")!=null)
                 listaCartelera = (ArrayList)session.getAttribute("pelisEncontradas");
@@ -45,14 +45,14 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="left-sidebar">
-                            <h2>Géneros</h2>
+                            <h2>Variedades</h2>
                             <div class="brands-name">
                                 <form action="Controlador" method="post" >
                                     <input type="hidden" name="form" value="PeliculasComando" >
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
-                                        <% for(Genero g : listaGeneros){%>
-                                        <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="<%=g.getIdGenero()%>" name="tipo"><%=g.getDescripcion()%></label></li>
+                                        <li><label class="etiquetaVariedad"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
+                                        <% for(Variedad v : listaVariedades){%>
+                                        <li><label class="etiquetaVariedad"><input onclick="submit()" type="radio" value="<%=v.getIdVariedad()%>" name="tipo"><%=v.getDescripcion()%></label></li>
                                         <%}%>                                                                                        
                                     </ul>
                                 </form>
@@ -60,11 +60,11 @@
                         </div>
                     </div>
                     <div class="col-sm-9 padding-right">
-                        <h2 class="title text-center">Películas</h2>
+                        <h2 class="title text-center">Tortas</h2>
                         <div class="features_items">
                             <% if(session.getAttribute("errorNoEncontradas")!=null){%>
                             <div class="alert alert-danger">
-                                <h2 class='text-center'>No hay películas que coincidan con su búsqueda!!</h2>
+                                <h2 class='text-center'>No hay tortas que coincidan con su búsqueda!!</h2>
                             </div>
                             <% session.setAttribute("errorNoEncontradas", null);}         
                              for(Pelicula p: listaCartelera){ %>
@@ -80,8 +80,7 @@
                                                 <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
                                                 <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
                                             </form>
-                                            <p><%=p.getAnio()%></p>
-                                            <p>$ <%=String.format("%.2f",p.getPrecioVenta())%></p>
+                                          <p>$ <%=String.format("%.2f",p.getPrecioVenta())%></p>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="AgregarLineaComando"/>
                                                 <input type="hidden" name="idPelicula" value="<%=p.getIdPelicula()%>"/>
@@ -98,7 +97,6 @@
                                                     <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
                                                     <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
                                                 </form>
-                                                <p><%=p.getAnio()%></p>
                                                 <p> <%=String.format("%.2f",p.getPrecioVenta())%></p>
                                                 <form action="Controlador" method="post">
                                                     <input type="hidden"  name="form" value="AgregarLineaComando"/>
