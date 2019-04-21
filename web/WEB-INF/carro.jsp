@@ -48,7 +48,7 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr class="cart_menu">
-                                    <td class="image">Película</td>
+                                    <td class="image">Torta</td>
                                     <td class="description">Descripción</td>
                                     <td class="price">Precio</td>
                                     <td class="quantity">Cantidad</td>
@@ -179,7 +179,7 @@
                     else if(contLAlquiler<=0 && contLCompra<=0)
                     {%> 
                     <div class="alert alert-danger">
-                        Usted no ha agregado películas al pedido.
+                        Usted no ha agregado tortas al pedido.
                     </div>
                     <%} else if(session.getAttribute("cantidadInvalida")!= null){%> 
                     <div class="alert alert-danger">
