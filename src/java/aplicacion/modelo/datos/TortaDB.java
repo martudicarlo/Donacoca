@@ -5,7 +5,7 @@
  */
 package aplicacion.modelo.datos;
 
-import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.entidades.Torta;
 import aplicacion.utilidades.AefilepException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -19,20 +19,20 @@ import java.util.ArrayList;
  *
  * @author User
  */
-public class PeliculaDB
+public class TortaDB
 {
     Conexion conec = new Conexion();
     Connection con = null;
     
     /**
-     * agrega la pelicula a la base de datos
-     * @param p pelicula a agregar
+     * agrega la torta a la base de datos
+     * @param p torta a agregar
      * @throws AefilepException 
      */
     
-    public void agregarPelicula(Pelicula p) throws AefilepException
+    public void agregarTorta(Torta p) throws AefilepException
     {
-        String transac = "insert into aefilep.peliculas values (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        String transac = "insert into aefilep.tortas values (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         try
         {
             con = conec.getConexion();
@@ -57,21 +57,21 @@ public class PeliculaDB
             if(rs.next())
             {
                 int id = rs.getInt(1);
-                p.setIdPelicula(id);
+                p.setIdTorta(id);
             }
             
-            new PeliculasVariedadesBD().agregarPeliculaVariedad(p);
+            new TortasVariedadesBD().agregarTortaVariedad(p);
             con.close();
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al registrar película.",ex);
+            throw new AefilepException("Error al registrar torta.",ex);
         }
     }
     
-    public void actualizarStock(Pelicula p) throws AefilepException
+    public void actualizarStock(Torta p) throws AefilepException
     {         
-        String sql = "update peliculas set stock_alquiler=?, stock_compra=? where id_pelicula=?;";
+        String sql = "update tortas set stock_alquiler=?, stock_compra=? where id_torta=?;";
             
         try
         {
@@ -79,28 +79,28 @@ public class PeliculaDB
             PreparedStatement pr = con.prepareStatement(sql);
             pr.setInt(1, p.getStockAlquiler());
             pr.setInt(2, p.getStockVenta());            
-            pr.setInt(3, p.getIdPelicula());
+            pr.setInt(3, p.getIdTorta());
             pr.executeUpdate();
             con.close();
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al actualizar stock de la película",ex);
+            throw new AefilepException("Error al actualizar stock de la torta",ex);
         }    
     }
     
     /**
-     * actualiza una pelicula
-     * @param p pelicula a editar
+     * actualiza una torta
+     * @param p torta a editar
      * @throws AefilepException 
      */
-    public void actualizarPelicula(Pelicula p) throws AefilepException
+    public void actualizarTorta(Torta p) throws AefilepException
     {      
         if(p.getImagen()!=null)
         { 
-            String sql = "update peliculas set nombre=? , duracion=? , formato=? ,"
+            String sql = "update tortas set nombre=? , duracion=? , formato=? ,"
                 + " stock_alquiler=? ,stock_compra=?, reparto=?, activo=?,url_trailer=? ,"
-                + " precio_venta=?, sinopsis=?, anio=?, imagen=? where id_pelicula=?";            
+                + " precio_venta=?, sinopsis=?, anio=?, imagen=? where id_torta=?";            
             try
             {
                 con = conec.getConexion();
@@ -117,23 +117,23 @@ public class PeliculaDB
                 pr.setString(10, p.getSinopsis());
                 pr.setInt(11, p.getAnio());           
                 pr.setBlob(12, p.getImagen());            
-                pr.setInt(13, p.getIdPelicula());
+                pr.setInt(13, p.getIdTorta());
                 
-                new PeliculasVariedadesBD().actualizarPeliculasVariedades(p);
+                new TortasVariedadesBD().actualizarTortasVariedades(p);
                 pr.executeUpdate();
 
                 con.close();
             }
             catch(SQLException ex)
             {
-                throw new AefilepException("Error al actualizar datos de la película",ex);
+                throw new AefilepException("Error al actualizar datos de la torta",ex);
             }        
         }
         else            
         {
-            String sql = "update peliculas set nombre=? , duracion=? , formato=? ,"
+            String sql = "update tortas set nombre=? , duracion=? , formato=? ,"
                 + " stock_alquiler=? ,stock_compra=?, reparto=?, activo=?,url_trailer=? ,"
-                + " precio_venta=?, sinopsis=?, anio=? where id_pelicula=?";
+                + " precio_venta=?, sinopsis=?, anio=? where id_torta=?";
             try
             {
                 con = conec.getConexion();
@@ -149,23 +149,23 @@ public class PeliculaDB
                 pr.setFloat(9, p.getPrecioVenta());
                 pr.setString(10, p.getSinopsis());
                 pr.setInt(11, p.getAnio());           
-                pr.setInt(12, p.getIdPelicula());
+                pr.setInt(12, p.getIdTorta());
                 
-                new PeliculasVariedadesBD().actualizarPeliculasVariedades(p);
+                new TortasVariedadesBD().actualizarTortasVariedades(p);
                 pr.executeUpdate();
            
                 con.close();
             }
             catch(SQLException ex)
             {
-                throw new AefilepException("Error al actualizar datos de la película",ex);
+                throw new AefilepException("Error al actualizar datos de la torta",ex);
             }  
         }    
     }
      
     public byte[] buscarImagen(int id) throws AefilepException
     {
-        String transac = "select imagen from peliculas where id_pelicula=?;";
+        String transac = "select imagen from tortas where id_torta=?;";
         byte[] imgData=null;
         
         try
@@ -187,10 +187,10 @@ public class PeliculaDB
         return imgData;
     }
      
-    public ArrayList<Pelicula> obtenerPeliculas() throws AefilepException
+    public ArrayList<Torta> obtenerTortas() throws AefilepException
     {
-        ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
-        String transac = "select * from peliculas";
+        ArrayList<Torta> listaTortas = new ArrayList<>();
+        String transac = "select * from tortas";
         try
         {
             con = conec.getConexion();
@@ -199,9 +199,9 @@ public class PeliculaDB
                    
             while(res.next())
             {
-                Pelicula p = new Pelicula();
+                Torta p = new Torta();
 
-                p.setIdPelicula(res.getInt(1));
+                p.setIdTorta(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
                 p.setFormato(res.getString(4));
@@ -224,23 +224,23 @@ public class PeliculaDB
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 }
 
-                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
-                listaPeliculas.add(p);
+                p.setVariedades(new TortasVariedadesBD().obtenerVariedadesTorta(p.getIdTorta()));
+                listaTortas.add(p);
             }
             con.close();
         }
         catch(SQLException Ex)
         {
-            throw new AefilepException("Error el recuperar datos de las películas",Ex);
+            throw new AefilepException("Error el recuperar datos de las tortas",Ex);
         }
          
-        return listaPeliculas;
+        return listaTortas;
     }
     
-    public ArrayList<Pelicula> obtenerPeliculas(String nombre, int inferior, int cantidad) throws AefilepException
+    public ArrayList<Torta> obtenerTortas(String nombre, int inferior, int cantidad) throws AefilepException
     {
-        ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
-        String transac = "select * from peliculas where nombre like '%"+nombre+"%'and activo=1 limit ?,?;";
+        ArrayList<Torta> listaTortas = new ArrayList<>();
+        String transac = "select * from tortas where nombre like '%"+nombre+"%'and activo=1 limit ?,?;";
         try
         {
             con = conec.getConexion();
@@ -251,9 +251,9 @@ public class PeliculaDB
             ResultSet res = pr.executeQuery();
             while(res.next())
             {
-                Pelicula p = new Pelicula();
+                Torta p = new Torta();
 
-                p.setIdPelicula(res.getInt(1));
+                p.setIdTorta(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
                 p.setFormato(res.getString(4));
@@ -275,24 +275,24 @@ public class PeliculaDB
                 {
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 }
-                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
+                p.setVariedades(new TortasVariedadesBD().obtenerVariedadesTorta(p.getIdTorta()));
 
-                listaPeliculas.add(p);
+                listaTortas.add(p);
             }
             con.close();
         }
         catch(SQLException Ex)
         {
-            throw new AefilepException("Error el recuperar datos de las películas",Ex);
+            throw new AefilepException("Error el recuperar datos de las tortas",Ex);
         }
         
-        return listaPeliculas;
+        return listaTortas;
     }
      
-    public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad) throws AefilepException
+    public ArrayList<Torta> buscarTortas(int inferior,int cantidad) throws AefilepException
     {
-        ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
-        String transac = "select * from peliculas where activo=1 limit ?,?;";
+        ArrayList<Torta> listaTortas = new ArrayList<>();
+        String transac = "select * from tortas where activo=1 limit ?,?;";
         
         try
         {
@@ -306,9 +306,9 @@ public class PeliculaDB
                    
             while(res.next())
             {
-                Pelicula p = new Pelicula();
+                Torta p = new Torta();
                 
-                p.setIdPelicula(res.getInt(1));
+                p.setIdTorta(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
                 p.setFormato(res.getString(4));
@@ -327,21 +327,21 @@ public class PeliculaDB
                 else
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
           
-                listaPeliculas.add(p);
+                listaTortas.add(p);
             }
             con.close();
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al recuperar películas",ex);
+            throw new AefilepException("Error al recuperar tortas",ex);
         }
-        return listaPeliculas;
+        return listaTortas;
     }
      
-    public Pelicula obtenerPelicula(int idPeli) throws AefilepException
+    public Torta obtenerTorta(int idPeli) throws AefilepException
     {
-        Pelicula p = null;
-        String transac = "select * from peliculas where activo=1 and id_pelicula=?";
+        Torta p = null;
+        String transac = "select * from tortas where activo=1 and id_torta=?";
         
         try
         {
@@ -352,8 +352,8 @@ public class PeliculaDB
                    
             if(res.next())
             {   
-                p=new Pelicula();
-                p.setIdPelicula(res.getInt(1));
+                p=new Torta();
+                p.setIdTorta(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
                 p.setFormato(res.getString(4));
@@ -376,21 +376,21 @@ public class PeliculaDB
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al recuperar los datos de la película",ex);
+            throw new AefilepException("Error al recuperar los datos de la torta",ex);
         }
         
         return p;
     }
     /**
-     * valida que la pelicula no exista en la base de datos comparando por nombre
-     * @param nombrePelicula nombre de la pelicula
-     * @return true si existe pelicula
+     * valida que la torta no exista en la base de datos comparando por nombre
+     * @param nombreTorta nombre de la torta
+     * @return true si existe torta
      * @throws AefilepException 
      */
     
-    public boolean existePelicula(String nombrePelicula) throws AefilepException
+    public boolean existeTorta(String nombreTorta) throws AefilepException
     {      
-        String transac = "select count(*) from peliculas where nombre=?";        
+        String transac = "select count(*) from tortas where nombre=?";        
         
         int cantidad=0;
         
@@ -398,7 +398,7 @@ public class PeliculaDB
         {
             con = conec.getConexion();
             PreparedStatement pr = con.prepareStatement(transac);
-            pr.setString(1, nombrePelicula);
+            pr.setString(1, nombreTorta);
             ResultSet res = pr.executeQuery();
                    
             if(res.next())              
@@ -408,16 +408,16 @@ public class PeliculaDB
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al recuperar los datos de la película",ex);
+            throw new AefilepException("Error al recuperar los datos de la torta",ex);
         }
         
         return cantidad > 0;
     }
     
-    public int cantidadPeliculas() throws AefilepException
+    public int cantidadTortas() throws AefilepException
     {
         int i=0;
-        String transac = "select count(*) from peliculas;";
+        String transac = "select count(*) from tortas;";
         
         try
         {
@@ -433,16 +433,16 @@ public class PeliculaDB
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al contar películas",ex);
+            throw new AefilepException("Error al contar tortas",ex);
         }
         
         return i;
     }
      
-    public int cantidadPeliculasActivas() throws AefilepException
+    public int cantidadTortasActivas() throws AefilepException
     {
         int i=0;
-        String transac = "select count(*) from peliculas where activo=1;";
+        String transac = "select count(*) from tortas where activo=1;";
         
         try
         {
@@ -458,7 +458,7 @@ public class PeliculaDB
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al contar películas",ex);
+            throw new AefilepException("Error al contar tortas",ex);
         }
         
         return i;
@@ -467,7 +467,7 @@ public class PeliculaDB
      public int cantidadEstrenosActivos() throws AefilepException
      {
         int i=0;
-        String transac = "select count(*) from peliculas where activo=1 and (`fecha_carga` +7)>CURRENT_DATE();";
+        String transac = "select count(*) from tortas where activo=1 and (`fecha_carga` +7)>CURRENT_DATE();";
         
         try
         {
@@ -492,7 +492,7 @@ public class PeliculaDB
     public int cantidadVariedadesActivas(int id) throws AefilepException
     {
         int i=0;
-        String transac = "select count(*) from peliculas p inner join peliculas_variedades pg on p.id_pelicula=pg.id_pelicula where id_variedad=? and activo=1;";
+        String transac = "select count(*) from tortas p inner join tortas_variedades pg on p.id_torta=pg.id_torta where id_variedad=? and activo=1;";
         
         try
         {
@@ -518,7 +518,7 @@ public class PeliculaDB
     public int cantidadBuscadorActivos(String nombre) throws AefilepException
     {
         int i=0;
-        String transac = "select count(*) from peliculas where  nombre like '%"+nombre+"%'and activo=1 ;";
+        String transac = "select count(*) from tortas where  nombre like '%"+nombre+"%'and activo=1 ;";
         
         try
         {
@@ -533,16 +533,16 @@ public class PeliculaDB
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error con los datos de las películas",ex);
+            throw new AefilepException("Error con los datos de las tortas",ex);
         }
              
         return i;
     }
     
-    public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad) throws AefilepException
+    public ArrayList<Torta> obtenerEstrenos(int inferior,int cantidad) throws AefilepException
     {
-        ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
-        String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 limit ?,?;";
+        ArrayList<Torta> listaEstrenos = new ArrayList<>();
+        String transac = "select * from tortas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 limit ?,?;";
         try
         {
             con = conec.getConexion();
@@ -553,9 +553,9 @@ public class PeliculaDB
                    
             while(res.next())
             {
-                Pelicula p = new Pelicula();
+                Torta p = new Torta();
                 
-                p.setIdPelicula(res.getInt(1));
+                p.setIdTorta(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
                 p.setFormato(res.getString(4));
@@ -575,7 +575,7 @@ public class PeliculaDB
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
 
                 
-                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
+                p.setVariedades(new TortasVariedadesBD().obtenerVariedadesTorta(p.getIdTorta()));
                 
                 listaEstrenos.add(p);
             }
@@ -583,16 +583,16 @@ public class PeliculaDB
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al recuperar datos de las películas",ex);
+            throw new AefilepException("Error al recuperar datos de las tortas",ex);
         }
         
         return listaEstrenos;
     }
     
-    public ArrayList<Pelicula> obtenerEstrenos(int cant) throws AefilepException
+    public ArrayList<Torta> obtenerEstrenos(int cant) throws AefilepException
     {
-        ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
-        String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 order by `fecha_carga` desc limit 0,?;";
+        ArrayList<Torta> listaEstrenos = new ArrayList<>();
+        String transac = "select * from tortas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 order by `fecha_carga` desc limit 0,?;";
         
         try
         {
@@ -603,9 +603,9 @@ public class PeliculaDB
                    
             while(res.next())
             {
-                Pelicula p = new Pelicula();
+                Torta p = new Torta();
                 
-                p.setIdPelicula(res.getInt(1));
+                p.setIdTorta(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
                 p.setFormato(res.getString(4));
@@ -624,7 +624,7 @@ public class PeliculaDB
                 else
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 
-                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
+                p.setVariedades(new TortasVariedadesBD().obtenerVariedadesTorta(p.getIdTorta()));
                 
                 listaEstrenos.add(p);
             }
@@ -638,7 +638,7 @@ public class PeliculaDB
         if (listaEstrenos.size()<3)
         {    
             int limit= cant-listaEstrenos.size();
-            String transac2 = "select * from peliculas where(`fecha_carga` +7)<CURRENT_DATE() and activo=1 limit 0,?;";
+            String transac2 = "select * from tortas where(`fecha_carga` +7)<CURRENT_DATE() and activo=1 limit 0,?;";
             try
             {
                 con = conec.getConexion();
@@ -648,9 +648,9 @@ public class PeliculaDB
 
                 while(res2.next())
                 {
-                    Pelicula p = new Pelicula();
+                    Torta p = new Torta();
 
-                    p.setIdPelicula(res2.getInt(1));
+                    p.setIdTorta(res2.getInt(1));
                     p.setNombre(res2.getString(2));
                     p.setDuracion(res2.getInt(3));
                     p.setFormato(res2.getString(4));
@@ -669,7 +669,7 @@ public class PeliculaDB
                     else
                         p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
 
-                    p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
+                    p.setVariedades(new TortasVariedadesBD().obtenerVariedadesTorta(p.getIdTorta()));
                     listaEstrenos.add(p);                  
                 }
                 con.close();
@@ -683,10 +683,10 @@ public class PeliculaDB
         return listaEstrenos;
     }
     
-    public ArrayList<Pelicula> obtenerVariedad(int idVariedad, int inferior, int cantidad) throws AefilepException
+    public ArrayList<Torta> obtenerVariedad(int idVariedad, int inferior, int cantidad) throws AefilepException
     {
-        ArrayList<Pelicula> listaVariedad = new ArrayList<>();
-        String transac = "select p.id_pelicula from peliculas_variedades pg inner join peliculas p on pg.id_pelicula=p.id_pelicula where pg.id_variedad=? and p.activo=1 limit ?,?";
+        ArrayList<Torta> listaVariedad = new ArrayList<>();
+        String transac = "select p.id_torta from tortas_variedades pg inner join tortas p on pg.id_torta=p.id_torta where pg.id_variedad=? and p.activo=1 limit ?,?";
         
         try
         {
@@ -699,7 +699,7 @@ public class PeliculaDB
                    
             while(res.next())
             {
-                Pelicula p = obtenerPelicula(res.getInt(1));
+                Torta p = obtenerTorta(res.getInt(1));
                 if(p!=null)
                 {               
                     listaVariedad.add(p);
@@ -709,7 +709,7 @@ public class PeliculaDB
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al recuperar películas",ex);
+            throw new AefilepException("Error al recuperar tortas",ex);
         }         
         return listaVariedad;
     }

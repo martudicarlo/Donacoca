@@ -8,11 +8,11 @@ package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Variedad;
 import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pedido;
-import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.entidades.Torta;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeVariedades;
 import aplicacion.modelo.negocio.CatalogoDeParametros;
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
 import aplicacion.utilidades.AefilepException;
 import java.sql.Array;
@@ -35,27 +35,27 @@ public class InicioComando extends Comando{
         request.getSession().setAttribute("pedido", pedido);
         request.getSession().setAttribute("cantidadDias", 1);
                 
-        // carga de peliculas del home, carrusel y tablita de abajo
-        CatalogoDePeliculas CdP= new CatalogoDePeliculas();
-        ArrayList<ArrayList<Pelicula>> listaPeliculas=new ArrayList<ArrayList<Pelicula>>();
-        ArrayList<Pelicula>pelisCarrusel= new ArrayList<Pelicula>();
+        // carga de tortas del home, carrusel y tablita de abajo
+        CatalogoDeTortas CdP= new CatalogoDeTortas();
+        ArrayList<ArrayList<Torta>> listaTortas=new ArrayList<ArrayList<Torta>>();
+        ArrayList<Torta>tortasCarrusel= new ArrayList<Torta>();
 
         try
         {       
-            listaPeliculas.add(CdP.obtenerVariedad(6, 0, 4));
-            listaPeliculas.add(CdP.obtenerVariedad(3, 0, 4));
-            listaPeliculas.add(CdP.obtenerVariedad(1, 0, 4));
-            listaPeliculas.add(CdP.obtenerVariedad(2, 0, 4));
-            listaPeliculas.add(CdP.obtenerVariedad(5, 0, 4));
-            pelisCarrusel= CdP.obtenerEstrenos(3);    
+            listaTortas.add(CdP.obtenerVariedad(6, 0, 4));
+            listaTortas.add(CdP.obtenerVariedad(3, 0, 4));
+            listaTortas.add(CdP.obtenerVariedad(1, 0, 4));
+            listaTortas.add(CdP.obtenerVariedad(2, 0, 4));
+            listaTortas.add(CdP.obtenerVariedad(5, 0, 4));
+            tortasCarrusel= CdP.obtenerEstrenos(3);    
         }
         catch(AefilepException ex)
         {
             request.getSession().setAttribute("ex", ex.getMessage());
             return "/home.jsp";
         }
-        request.getSession().setAttribute("listaPeliculas", listaPeliculas);
-        request.getSession().setAttribute("pelisCarrusel", pelisCarrusel);
+        request.getSession().setAttribute("listaTortas", listaTortas);
+        request.getSession().setAttribute("tortasCarrusel", tortasCarrusel);
         
         //carga de géneros
         CatalogoDeVariedades cDeVar = new CatalogoDeVariedades();

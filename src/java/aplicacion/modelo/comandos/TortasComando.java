@@ -5,8 +5,8 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.entidades.Torta;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marti_000
  */
-public class PeliculasComando extends Comando
+public class TortasComando extends Comando
 {
-    private CatalogoDePeliculas cDp;
+    private CatalogoDeTortas cDp;
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
@@ -50,9 +50,9 @@ public class PeliculasComando extends Comando
         }
         request.getSession().setAttribute("pActual", paginaActual);
         
-        cDp = new CatalogoDePeliculas();
-        int cantidadDePeliculas = 0;
-        ArrayList<Pelicula> listaPeliculas = null;
+        cDp = new CatalogoDeTortas();
+        int cantidadDeTortas = 0;
+        ArrayList<Torta> listaTortas = null;
         
         try
         {
@@ -60,28 +60,28 @@ public class PeliculasComando extends Comando
             {
                 if(request.getSession().getAttribute("tipo").equals("estreno"))             
                 {
-                    listaPeliculas = cDp.obtenerEstrenos((paginaActual-1)*9,9);
-                    cantidadDePeliculas=cDp.cantidadEstrenosActivos();
+                    listaTortas = cDp.obtenerEstrenos((paginaActual-1)*9,9);
+                    cantidadDeTortas=cDp.cantidadEstrenosActivos();
                 }
                 else if(request.getSession().getAttribute("tipo").equals("buscador"))
                 {                     
-                    listaPeliculas = cDp.obtenerPeliculas(request.getSession().getAttribute("nombrePelicula").toString(),(paginaActual-1)*9,9);
-                    cantidadDePeliculas=cDp.cantidadBuscadorActivos(request.getSession().getAttribute("nombrePelicula").toString());
+                    listaTortas = cDp.obtenerTortas(request.getSession().getAttribute("nombrePelicula").toString(),(paginaActual-1)*9,9);
+                    cantidadDeTortas=cDp.cantidadBuscadorActivos(request.getSession().getAttribute("nombrePelicula").toString());
                     
-                    if(listaPeliculas.isEmpty())
+                    if(listaTortas.isEmpty())
                         request.getSession().setAttribute("errorNoEncontradas",true);
                     request.getSession().setAttribute("variedadObtenida",true);
                 }
                 else if(request.getSession().getAttribute("tipo").equals("todas"))
                 { 
-                    listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
-                    cantidadDePeliculas = cDp.cantidadPeliculasActivas();
+                    listaTortas = cDp.buscarTortas((paginaActual-1)*9,9);
+                    cantidadDeTortas = cDp.cantidadTortasActivas();
                 }
                 else
                 {
-                    listaPeliculas = cDp.obtenerVariedad((Integer)request.getSession().getAttribute("tipo"),(paginaActual-1)*9,9);
+                    listaTortas = cDp.obtenerVariedad((Integer)request.getSession().getAttribute("tipo"),(paginaActual-1)*9,9);
                     request.getSession().setAttribute("variedadObtenida",true);
-                    cantidadDePeliculas=cDp.cantidadVariedadesActivas((Integer)request.getSession().getAttribute("tipo"));
+                    cantidadDeTortas=cDp.cantidadVariedadesActivas((Integer)request.getSession().getAttribute("tipo"));
                 }
             }
         }
@@ -91,8 +91,8 @@ public class PeliculasComando extends Comando
             return "/cartelera.jsp";
         }
      
-        request.getSession().setAttribute("listaCartelera", listaPeliculas);
-        request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
+        request.getSession().setAttribute("listaCartelera", listaTortas);
+        request.getSession().setAttribute("cantidadTortas",cantidadDeTortas);
         request.getSession().setAttribute("VariedadObtenida", null);
         
         return "/cartelera.jsp";       

@@ -44,7 +44,7 @@ function validarChecks()
     }
     else
     {
-        alert("Seleccione alg\u00fan g\u00e9nero para la pel\u00edcula");
+        alert("Seleccione alg\u00fan g\u00e9nero para la torta\u00edcula");
         return false;
     }
 }

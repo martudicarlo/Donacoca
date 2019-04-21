@@ -23,7 +23,7 @@ public class LineaBD
     
     public ArrayList<LineaPedido> obtenerLineaAlq (int idPedido) throws AefilepException 
     {
-        String sql = "select * from aefilep.pedidos_peliculas where id_pedido =? and es_alquiler=1;";
+        String sql = "select * from aefilep.pedidos_tortas where id_pedido =? and es_alquiler=1;";
         Connection con = null;      
         ArrayList<LineaPedido> lineas = new ArrayList<>();
         
@@ -39,7 +39,7 @@ public class LineaBD
             {
                 LineaPedido lp = new LineaPedido();
                 
-                lp.setPelicula(new PeliculaDB().obtenerPelicula(res.getInt(1)));
+                lp.setTorta(new TortaDB().obtenerTorta(res.getInt(1)));
                 lp.setCantidad(res.getInt(3));
                 lp.setEsAlquiler(res.getBoolean(4));
                 lp.setSubtotal(res.getFloat(5));
@@ -57,7 +57,7 @@ public class LineaBD
     
     public ArrayList<LineaPedido> obtenerLineas (int idPedido) throws AefilepException 
     {
-        String sql = "select * from aefilep.pedidos_peliculas where id_pedido =?;";
+        String sql = "select * from aefilep.pedidos_tortas where id_pedido =?;";
         Connection con = null;
         ArrayList<LineaPedido> lineas = new ArrayList<>();
        
@@ -73,7 +73,7 @@ public class LineaBD
             {
                 LineaPedido lp = new LineaPedido();
                 
-                lp.setPelicula(new PeliculaDB().obtenerPelicula(res.getInt(1)));
+                lp.setTorta(new TortaDB().obtenerTorta(res.getInt(1)));
                 lp.setCantidad(res.getInt(3));
                 lp.setEsAlquiler(res.getBoolean(4));
                 lp.setSubtotal(res.getFloat(5));
@@ -94,7 +94,7 @@ public class LineaBD
         
         for(LineaPedido lp: lineas ) 
         {   
-            String transac1 = "insert into aefilep.pedidos_peliculas values (?,?,?,?,?);";
+            String transac1 = "insert into aefilep.pedidos_tortas values (?,?,?,?,?);";
             Connection con;
             try
             {
@@ -102,7 +102,7 @@ public class LineaBD
                 
                 PreparedStatement pr = con.prepareStatement(transac1);
                 
-                pr.setInt(1, lp.getPelicula().getIdPelicula());
+                pr.setInt(1, lp.getTorta().getIdTorta());
                 pr.setInt(2, idPedido);
                 pr.setInt(3, lp.getCantidad());
                 pr.setBoolean(4, lp.isEsAlquiler());

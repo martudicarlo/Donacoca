@@ -1,9 +1,9 @@
-<%@page import="aplicacion.modelo.negocio.CatalogoDePeliculas"%>
+<%@page import="aplicacion.modelo.negocio.CatalogoDeTortas"%>
 <%@page import="aplicacion.modelo.entidades.Pedido"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="aplicacion.modelo.datos.ParametroBD"%>
-<%@page import="aplicacion.modelo.entidades.Pelicula"%>
+<%@page import="aplicacion.modelo.entidades.Torta"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +23,8 @@
         </div>
         <%}else{
          session.setAttribute("ex", null);
-         ArrayList<Pelicula> pelisCarrusel = (ArrayList)session.getAttribute("pelisCarrusel");
-         ArrayList<ArrayList<Pelicula>> listaPeliculas = (ArrayList)session.getAttribute("listaPeliculas"); %>
+         ArrayList<Torta> tortasCarrusel = (ArrayList)session.getAttribute("tortasCarrusel");
+         ArrayList<ArrayList<Torta>> listaTortas = (ArrayList)session.getAttribute("listaTortas"); %>
         <section id="slider"><!--slider-->
             <div class="container">                            
                 <div class="row">
@@ -37,7 +37,7 @@
                             </ol>	                      
                             <div class="carousel-inner">
                             <% int indice=0;
-                            for(Pelicula pc: pelisCarrusel){ %>
+                            for(Torta pc: tortasCarrusel){ %>
                                 <div class="item <%if(indice==1){%>active<%}%>">
                                     <div class="col-sm-6">
                                         <h1><span>D</span>oña Coca - Pastelería</h1>
@@ -45,12 +45,12 @@
                                         <p><%=pc.getSinopsis(150)%>...</p>
                                         <form action="Controlador" method="post">
                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
-                                            <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
-                                            <input type="hidden"  name="idPelicula" value="<%=pc.getIdPelicula()%>"/>
+                                            <input type="hidden"  name="form" value="ObtenerTortaComando"/>
+                                            <input type="hidden"  name="idTorta" value="<%=pc.getIdTorta()%>"/>
                                         </form>
                                     </div>
                                     <div class="col-sm-6">
-                                        <img src="ProcesadorImagenes?id=<%=pc.getIdPelicula()%>" class="imagenCarrusel img-responsive" alt="">
+                                        <img src="ProcesadorImagenes?id=<%=pc.getIdTorta()%>" class="imagenCarrusel img-responsive" alt="">
                                         <img src="./imagenes/new.png" class="pricing" alt="">
                                     </div>
                                 </div>
@@ -91,19 +91,19 @@
                                 </ul>
                             </div>
                             <div class="tab-content">
-                            <% for(int i=0; i<listaPeliculas.size();i++){%>
+                            <% for(int i=0; i<listaTortas.size();i++){%>
                                 <div class="tab-pane fade <%if(i==0){%>active in<%}%>" id="<%=listaNombres[i]%>">                      
-                                <%for(Pelicula p: (listaPeliculas.get(i))){%>
+                                <%for(Torta p: (listaTortas.get(i))){%>
                                     <div class="col-sm-3">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <img class="imgChica" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
+                                                    <img class="imgChica" src="ProcesadorImagenes?id=<%=p.getIdTorta()%>" alt="">
                                                     <h2><%=p.getNombre()%></h2>
                                                     <form action="Controlador" method="post">
                                                         <button type="submit" class="btn btn-default get">Obtener ahora</button>
-                                                        <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
-                                                        <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                                        <input type="hidden"  name="form" value="ObtenerTortaComando"/>
+                                                        <input type="hidden"  name="idTorta" value="<%=p.getIdTorta()%>"/>
                                                     </form>
                                                 </div>
                                             </div>

@@ -45,7 +45,7 @@
                     <div class="single-widget">
                         <h2>Tortas</h2>                            
                         <form action="Controlador" method="post">                                                             
-                            <input type="hidden" name="form" value="PeliculasComando" >
+                            <input type="hidden" name="form" value="TortasComando" >
                             <ul class="nav nav-pills nav-stacked">                                                                  
                                 <li><label><input onclick="submit()" type="radio" name="tipo" value="todas">Todas </label></li>
                                 <li><label><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
@@ -59,7 +59,7 @@
                 <div class="col-sm-2 colFooter">
                     <div class="single-widget listaVariedadesFooter">
                         <form action="Controlador" method="post">                               
-                            <input type="hidden" name="form" value="PeliculasComando" >
+                            <input type="hidden" name="form" value="TortasComando" >
                             <ul class="nav nav-pills nav-stacked">
                                 <li><label><input onclick="submit()" type="radio" value="6" name="tipo">Comedia</label></li>               
                                 <li><label><input onclick="submit()" type="radio" value="11" name="tipo">Crimen</label></li>
@@ -73,7 +73,7 @@
                 <div class="col-sm-2 colFooter">
                     <div class="single-widget listaVariedadesFooter">
                         <form action="Controlador" method="post" >                               
-                            <input type="hidden" name="form" value="PeliculasComando" >
+                            <input type="hidden" name="form" value="TortasComando" >
                             <ul class="nav nav-pills nav-stacked">
                                 <li><label><input onclick="submit()" type="radio" value="10" name="tipo">Suspenso</label></li>
                                 <li><label><input onclick="submit()" type="radio" value="1" name="tipo">Terror</label></li>
@@ -111,8 +111,8 @@
                             <li>
                                 <form action="Controlador" method="post" class="formFooter">
                                     <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
-                                    <input type="hidden"  name="form" value="AdminPeliculasComando"/>
-                                    <input type="submit" name="pagina" value="Peliculas">
+                                    <input type="hidden"  name="form" value="AdminTortasComando"/>
+                                    <input type="submit" name="pagina" value="Tortas">
                                 </form>
                             </li>
                             <li>

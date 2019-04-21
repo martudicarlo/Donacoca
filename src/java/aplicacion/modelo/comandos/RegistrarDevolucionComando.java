@@ -42,7 +42,7 @@ public class RegistrarDevolucionComando extends Comando
         {
             if(lp.isEsAlquiler())
             {
-                lp.getPelicula().setStockAlquiler((lp.getPelicula().getStockAlquiler()+1));
+                lp.getTorta().setStockAlquiler((lp.getTorta().getStockAlquiler()+1));
             }
         }
         

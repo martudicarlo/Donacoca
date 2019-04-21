@@ -15,9 +15,9 @@ import javax.servlet.http.Part;
  *
  * @author JP
  */
-public class Pelicula 
+public class Torta 
 {
-    private int idPelicula;
+    private int idTorta;
     private String sinopsis;
     private String nombre;
     private int duracion;
@@ -35,7 +35,7 @@ public class Pelicula
     private ArrayList<Variedad> variedades;
     private InputStream imagen;
     
-    public Pelicula()
+    public Torta()
     {
         this.variedades = new ArrayList<Variedad>();
     }
@@ -78,11 +78,11 @@ public class Pelicula
     //private String imagen;
 
     /**
-     * @return the idPelicula
+     * @return the idTorta
      */
-    public int getIdPelicula()
+    public int getIdTorta()
     {
-        return idPelicula;
+        return idTorta;
     }
     
     public boolean isEstreno()
@@ -100,11 +100,11 @@ public class Pelicula
         estreno=e;
     }
     /**
-     * @param idPelicula the idPelicula to set
+     * @param idTorta the idTorta to set
      */
-    public void setIdPelicula(int idPelicula)
+    public void setIdTorta(int idTorta)
     {
-        this.idPelicula = idPelicula;
+        this.idTorta = idTorta;
     }
     
     public int getAnio()

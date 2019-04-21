@@ -145,7 +145,7 @@
                                     <form action="Controlador" method="post">                                
                                         <input class="<%if(request.getRequestURI().contains("/cartelera.jsp")){%>active<%}%>" type="submit" name="pagina" value="Tortas" >
                                         <input type="hidden"  name="tipo" value="todas"/>
-                                        <input type="hidden"  name="form" value="PeliculasComando"/>
+                                        <input type="hidden"  name="form" value="TortasComando"/>
                                     </form>
                                 </a>
                             </li>
@@ -171,14 +171,14 @@
                             <%Usuario usu = (Usuario)session.getAttribute("usuario");
                             if(usu!=null && usu.isEsAdmin())
                             {%>
-                            <li class="dropdown"><a href="#" class="<%if(request.getRequestURI().contains("/ABMUsuarios.jsp") ||request.getRequestURI().contains("/ABMPeliculas.jsp") || request.getRequestURI().contains("/Devoluciones.jsp") ){%>active<%}%>" >Administrador<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#" class="<%if(request.getRequestURI().contains("/ABMUsuarios.jsp") ||request.getRequestURI().contains("/ABMTortas.jsp") || request.getRequestURI().contains("/Devoluciones.jsp") ){%>active<%}%>" >Administrador<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li>
                                         <a>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
-                                                <input type="hidden"  name="form" value="AdminPeliculasComando"/>
-                                                <input class="<%if(request.getRequestURI().contains("/ABMPeliculas.jsp") ){%>active<%}%>" type="submit" name="pagina" value="Peliculas">
+                                                <input type="hidden"  name="form" value="AdminTortasComando"/>
+                                                <input class="<%if(request.getRequestURI().contains("/ABMTortas.jsp") ){%>active<%}%>" type="submit" name="pagina" value="Tortas">
                                             </form>
                                         </a>
                                     </li>
@@ -210,7 +210,7 @@
                         <form action="Controlador" method="post">
                             <input type="text" name="nombrePelicula" placeholder="Nombre Torta">
                             <input type="hidden" name="tipo" value="buscador">
-                            <input type="hidden" name="form" value="PeliculasComando" onchange="submit()">
+                            <input type="hidden" name="form" value="TortasComando" onchange="submit()">
                         </form>
                     </div>
                 </div>

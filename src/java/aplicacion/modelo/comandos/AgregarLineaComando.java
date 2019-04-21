@@ -6,8 +6,8 @@
 package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.LineaPedido;
 import aplicacion.modelo.entidades.Pedido;
-import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.entidades.Torta;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,19 +21,19 @@ public class AgregarLineaComando extends Comando
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        int idPelicula = Integer.parseInt(request.getParameter("idPelicula"));
+        int idTorta = Integer.parseInt(request.getParameter("idTorta"));
         boolean alquiler = request.getParameter("tipoLinea").equals("Alquilar");
         Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
         int lineaExiste=0;
         
         for(LineaPedido lp: pedido.getLineas())
         {
-            if(lp.getPelicula().getIdPelicula()==idPelicula && (lp.isEsAlquiler()==alquiler))
+            if(lp.getTorta().getIdTorta()==idTorta && (lp.isEsAlquiler()==alquiler))
             {
                 if(alquiler==false)//Porque solo la compra admite un aumento de cantidad
                 {
                    lp.setCantidad(lp.getCantidad()+1);
-                   request.getSession().setAttribute("exitoPeliculaAgregada", true);
+                   request.getSession().setAttribute("exitoTortaAgregada", true);
                 }
                 
                 lineaExiste=1;
@@ -42,27 +42,27 @@ public class AgregarLineaComando extends Comando
         
         if(lineaExiste==0)
         {
-            CatalogoDePeliculas cdp = new CatalogoDePeliculas();
+            CatalogoDeTortas cdp = new CatalogoDeTortas();
             LineaPedido linea = new LineaPedido();
             linea.setEsAlquiler(alquiler);
             try
             {
-                Pelicula peli = cdp.obtenerPelicula(idPelicula);
+                Torta torta = cdp.obtenerTorta(idTorta);
                 linea.setCantidad(1);
-                linea.setPelicula(peli);
+                linea.setTorta(torta);
                 pedido.setLinea(linea);
-                request.getSession().setAttribute("exitoPeliculaAgregada", true);
+                request.getSession().setAttribute("exitoTortaAgregada", true);
             }
             catch(Exception ex)
             {
-                request.getSession().setAttribute("exitoPeliculaAgregada", false);
+                request.getSession().setAttribute("exitoTortaAgregada", false);
             }   
         }
         
         request.getSession().setAttribute("pedido",pedido);
         
-        if(request.getParameter("provieneDePelicula")!=null)
-           return "/pelicula.jsp";
+        if(request.getParameter("provieneDeTorta")!=null)
+           return "/torta.jsp";
         
         return "/cartelera.jsp";
     }

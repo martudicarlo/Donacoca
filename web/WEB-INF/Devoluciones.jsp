@@ -110,7 +110,7 @@
                                             <th>ID Pedido</th>
                                             <th>F Desde</th>
                                             <th>F Hasta</th>
-                                            <th>Peliculas</th>
+                                            <th>Tortas</th>
                                             <th>Recargo</th>
                                             <th></th>
                                         </tr>
@@ -123,7 +123,7 @@
                                             <td><%= p.getFechaHasta() %></td>
                                             <td>
                                             <% for(LineaPedido lp: p.getLineas()){%>           
-                                                <%=lp.getPelicula().getNombre()%><br>
+                                                <%=lp.getTorta().getNombre()%><br>
                                             <%}%> 
                                             </td>
                                             <td><%= p.getRecargo()%></td>

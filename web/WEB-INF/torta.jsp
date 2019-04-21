@@ -8,7 +8,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <%Pelicula peliActual=(Pelicula)session.getAttribute("peliActual"); 
+        <%Pelicula tortaActual=(Pelicula)session.getAttribute("tortaActual"); 
           ArrayList<Variedad> listaVariedades = (ArrayList)session.getAttribute("variedades");%>
         <section>
             <div class="container">
@@ -18,7 +18,7 @@
                             <h2>Variedades</h2>
                             <div class="category-products">
                                 <form action="Controlador" method="post" >
-                                    <input type="hidden" name="form" value="PeliculasComando" >
+                                    <input type="hidden" name="form" value="TortasComando" >
                                     <ul class="nav nav-pills nav-stacked">
                                         <li><label class="etiquetaVariedad"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
                                         <% for(Variedad v : listaVariedades){%>
@@ -33,33 +33,33 @@
                         <div class="product-details"><!--product-details-->
                             <div class="col-sm-5">                                   
                                 <div class="productinfo">
-                                    <img class="imagenPelicula" src="ProcesadorImagenes?id=<%=peliActual.getIdPelicula()%>" alt="<%=peliActual.getNombre()%>">
+                                    <img class="imagenPelicula" src="ProcesadorImagenes?id=<%=tortaActual.getIdPelicula()%>" alt="<%=tortaActual.getNombre()%>">
                                 </div>
                             </div>
                             <div class="col-sm-7">
                                 <div class="product-information"><!--/product-information-->
-                                    <h2><%=peliActual.getNombre()%></h2>
+                                    <h2><%=tortaActual.getNombre()%></h2>
 
-                                    <p><b>Año: </b><%=peliActual.getAnio()%></p>
-                                    <p><b>Duración:</b> <%=peliActual.getDuracion()%></p>                                                                                  
-                                    <p><b>Disponible para alquiler:</b><%if(peliActual.getStockAlquiler()>0){ %> Si <%}else{%> No <%}%></p>
-                                    <p><b>Disponible para compra:</b><%if(peliActual.getStockVenta()>0){ %> Si <%}else{%> No <%}%></p>
-                                    <p><b>Estreno: </b> <%if(peliActual.isEstreno()){%> Si <%}else{%> No <%}%></p>
-                                    <p><b>Formato: </b><%=peliActual.getFormato()%></p>
-                                    <p><b>Reparto: </b><%=peliActual.getReparto()%></p>
-                                    <p><b>Sinopsis: </b><%=peliActual.getSinopsis()%></p>
+                                    <p><b>Año: </b><%=tortaActual.getAnio()%></p>
+                                    <p><b>Duración:</b> <%=tortaActual.getDuracion()%></p>                                                                                  
+                                    <p><b>Disponible para alquiler:</b><%if(tortaActual.getStockAlquiler()>0){ %> Si <%}else{%> No <%}%></p>
+                                    <p><b>Disponible para compra:</b><%if(tortaActual.getStockVenta()>0){ %> Si <%}else{%> No <%}%></p>
+                                    <p><b>Estreno: </b> <%if(tortaActual.isEstreno()){%> Si <%}else{%> No <%}%></p>
+                                    <p><b>Formato: </b><%=tortaActual.getFormato()%></p>
+                                    <p><b>Reparto: </b><%=tortaActual.getReparto()%></p>
+                                    <p><b>Sinopsis: </b><%=tortaActual.getSinopsis()%></p>
                                     <form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="AgregarLineaComando"/>
-                                        <input type="hidden" name="idPelicula" value="<%=peliActual.getIdPelicula()%>"/>
+                                        <input type="hidden" name="idPelicula" value="<%=tortaActual.getIdPelicula()%>"/>
                                         <input type="hidden" name="provieneDePelicula" value="true">
                                         <span>
-                                            <span class="precios">Alquiler $<%=String.format("%.2f",peliActual.getPrecioAlquiler())%></span>
+                                            <span class="precios">Alquiler $<%=String.format("%.2f",tortaActual.getPrecioAlquiler())%></span>
                                             <button type="submit" class="btn btn-fefault cart botonPelicula"  name="tipoLinea" value="Alquilar">
                                                 <i class="fa fa-shopping-cart"></i> Alquilar
                                             </button>
                                         </span>                                      
                                         <span>
-                                            <span class="precios">Compra $<%=String.format("%.2f",peliActual.getPrecioVenta())%></span>
+                                            <span class="precios">Compra $<%=String.format("%.2f",tortaActual.getPrecioVenta())%></span>
                                             <button type="submit" class="btn btn-fefault cart botonPelicula"  name="tipoLinea" value="Comprar">
                                                 <i class="fa fa-shopping-cart"></i> Comprar
                                             </button>
@@ -70,7 +70,7 @@
                             <h4>Ver Trailer</h4>
                             <div class="row">
                                 <div class="embed-container">                             
-                                    <iframe width="560" height="315" src="<%=peliActual.getUrlTrailer()%>" frameborder="0" allowfullscreen></iframe>
+                                    <iframe width="560" height="315" src="<%=tortaActual.getUrlTrailer()%>" frameborder="0" allowfullscreen></iframe>
                                 </div> 
                             </div>
                         </div>

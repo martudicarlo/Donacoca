@@ -6,47 +6,47 @@
 package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Variedad;
-import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.entidades.Torta;
 import aplicacion.modelo.negocio.CatalogoDeVariedades;
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * guarda en la sesion las peliculas y los generos
- * y se guarda la primer pelicula para editarla
+ * guarda en la sesion las tortas y los generos
+ * y se guarda la primer torta para editarla
  * 
  */
-public class AdminPeliculasComando extends Comando
+public class AdminTortasComando extends Comando
 {
-    CatalogoDePeliculas CdeP;
+    CatalogoDeTortas CdeP;
     CatalogoDeVariedades CdeV;
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) 
     {
-        CdeP = new CatalogoDePeliculas();
+        CdeP = new CatalogoDeTortas();
         CdeV = new CatalogoDeVariedades();
-        ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+        ArrayList<Torta> tortas = new ArrayList<Torta>();
         ArrayList<Variedad> variedades = new ArrayList<Variedad>();
-        Pelicula peliEdit = null;
+        Torta tortaEdit = null;
         try
         {
-            peliculas = CdeP.obtenerPeliculas();
+            tortas = CdeP.obtenerTortas();
            variedades = CdeV.obtenerVariedad();
         }
         catch(Exception ex)
         {
             request.setAttribute("ex",ex.getMessage());
-            return "/ABMPeliculas.jsp";
+            return "/ABMTortas.jsp";
         }
       
-        peliEdit = peliculas.get(0);
-        request.getSession().setAttribute("ListaPeliculas", peliculas);
+        tortaEdit = tortas.get(0);
+        request.getSession().setAttribute("ListaTortas", tortas);
         request.getSession().setAttribute("ListaVariedades", variedades);
-        request.getSession().setAttribute("PeliEdit", peliEdit);
+        request.getSession().setAttribute("PeliEdit", tortaEdit);
         
-        return "/ABMPeliculas.jsp";
+        return "/ABMTortas.jsp";
     } 
 }

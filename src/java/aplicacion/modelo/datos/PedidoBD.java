@@ -6,7 +6,7 @@
 package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.LineaPedido;
-import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.entidades.Torta;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.utilidades.AefilepException;
@@ -47,8 +47,8 @@ public class PedidoBD
             {
                 if(lp.isEsAlquiler())
                 {
-                    Pelicula pel = lp.getPelicula();
-                    new PeliculaDB().actualizarStock(pel);
+                    Torta tort = lp.getTorta();
+                    new TortaDB().actualizarStock(tort);
                 }   
             }
         }

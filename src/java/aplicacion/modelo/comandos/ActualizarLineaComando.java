@@ -20,7 +20,7 @@ public class ActualizarLineaComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {    
         boolean tipoL = Boolean.parseBoolean(request.getParameter("tipoLinea"));
-        int idPelicula = Integer.parseInt(request.getParameter("idPelicula"));
+        int idTorta = Integer.parseInt(request.getParameter("idTorta"));
         String cantStr=request.getParameter("cantidad");
         
         if(cantStr.matches("[1-9][0-9]*"))
@@ -29,7 +29,7 @@ public class ActualizarLineaComando extends Comando
             Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
             for(LineaPedido lp: pedido.getLineas())
             {
-                if(lp.getPelicula().getIdPelicula()==idPelicula && (lp.isEsAlquiler()==tipoL))
+                if(lp.getTorta().getIdTorta()==idTorta && (lp.isEsAlquiler()==tipoL))
                     lp.setCantidad(cant);
             }
         }

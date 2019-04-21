@@ -5,7 +5,7 @@
  */
 package aplicacion.utilidades;
 
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -59,7 +59,7 @@ public class ProcesadorImagenes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
-        CatalogoDePeliculas cdp= new CatalogoDePeliculas();
+        CatalogoDeTortas cdp= new CatalogoDeTortas();
         
         try
         {

@@ -21,12 +21,12 @@ public class EliminarLineaComando extends Comando
     {
         Pedido ped= (Pedido)request.getSession().getAttribute("pedido");
         boolean alquiler= Boolean.valueOf(request.getParameter("tipoLinea"));
-        Integer idPelicula= Integer.parseInt(request.getParameter("idPelicula"));
+        Integer idTorta= Integer.parseInt(request.getParameter("idTorta"));
         LineaPedido L = null;
         
         for(LineaPedido lp: ped.getLineas())
         {
-            if(lp.getPelicula().getIdPelicula()==idPelicula && lp.isEsAlquiler()==alquiler)
+            if(lp.getTorta().getIdTorta()==idTorta && lp.isEsAlquiler()==alquiler)
             {  
                 L=lp;
                 break;

@@ -46,7 +46,7 @@
                                         <th>ID Pedido</th>
                                         <th>F Desde</th>
                                         <th>Socio</th>
-                                        <th>Peliculas</th>
+                                        <th>Tortas</th>
                                         <th>Destino</th>
                                         <th></th>
                                     </tr>

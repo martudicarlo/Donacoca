@@ -5,7 +5,7 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.entidades.Torta;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,32 +14,32 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JP
  */
-public class SeleccionarPeliculaComando extends Comando
+public class SeleccionarTortaComando extends Comando
 {
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        int idPeliEdit = Integer.parseInt( request.getParameter("idPeliEdit"));
+        int idPeliEdit = Integer.parseInt( request.getParameter("idTortaEdit"));
         
         if(idPeliEdit!=0)
         {
-            ArrayList<Pelicula> peliculas = (ArrayList<Pelicula>)request.getSession().getAttribute("ListaPeliculas");
-            Pelicula peliEdit=null;
-            for(Pelicula pel:peliculas)
+            ArrayList<Torta> tortas = (ArrayList<Torta>)request.getSession().getAttribute("ListaTortas");
+            Torta tortaEdit=null;
+            for(Torta torta:tortas)
             {
-                if(idPeliEdit==pel.getIdPelicula())
-                    peliEdit=pel;         
+                if(idPeliEdit==torta.getIdTorta())
+                    tortaEdit=torta;         
             }
-            request.getSession().setAttribute("PeliEdit", peliEdit);
+            request.getSession().setAttribute("TortaEdit", tortaEdit);
         }
         else
         {
-            request.getSession().setAttribute("PeliEdit", null);
+            request.getSession().setAttribute("TortaEdit", null);
         }
         
         request.getSession().setAttribute("Scroll",true);
         
-        return "/ABMPeliculas.jsp";
+        return "/ABMTortas.jsp";
     }    
 }

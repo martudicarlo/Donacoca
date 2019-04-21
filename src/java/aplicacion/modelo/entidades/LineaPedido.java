@@ -14,7 +14,7 @@ public class LineaPedido
     private int cantidad;
     private float subtotal;
     private boolean esAlquiler;
-    private Pelicula pelicula;
+    private Torta torta;
 
     /**
      * @return the cantidad
@@ -39,9 +39,9 @@ public class LineaPedido
     public float getSubtotal(int cantidadDias)
     {
         if(esAlquiler)
-            subtotal = cantidad*pelicula.getPrecioAlquiler()*cantidadDias;
+            subtotal = cantidad*torta.getPrecioAlquiler()*cantidadDias;
         else
-            subtotal = cantidad*pelicula.getPrecioVenta();
+            subtotal = cantidad*torta.getPrecioVenta();
         
         return subtotal;
     }
@@ -71,18 +71,18 @@ public class LineaPedido
     }
 
     /**
-     * @return the pelicula
+     * @return the torta
      */
-    public Pelicula getPelicula() 
+    public Torta getTorta() 
     {
-        return pelicula;
+        return torta;
     }
 
     /**
-     * @param pelicula the pelicula to set
+     * @param torta the torta to set
      */
-    public void setPelicula(Pelicula pelicula)
+    public void setTorta(Torta torta)
     {
-        this.pelicula = pelicula;
+        this.torta = torta;
     }
 }

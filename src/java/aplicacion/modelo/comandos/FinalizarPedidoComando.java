@@ -9,7 +9,7 @@ import aplicacion.modelo.entidades.LineaPedido;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import aplicacion.utilidades.AefilepException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,9 +42,9 @@ public class FinalizarPedidoComando extends Comando
                     int stock;
                     
                     if(lp.isEsAlquiler())
-                        stock=lp.getPelicula().getStockAlquiler();                   
+                        stock=lp.getTorta().getStockAlquiler();                   
                     else 
-                        stock=lp.getPelicula().getStockVenta();
+                        stock=lp.getTorta().getStockVenta();
 
                     if(stock<lp.getCantidad())
                     {   
@@ -59,26 +59,26 @@ public class FinalizarPedidoComando extends Comando
                     if(lp.isEsAlquiler())
                     {
                         //contAlq++;
-                        lp.getPelicula().setStockAlquiler(lp.getPelicula().getStockAlquiler()-lp.getCantidad());
+                        lp.getTorta().setStockAlquiler(lp.getTorta().getStockAlquiler()-lp.getCantidad());
                     }
                     else
                     {
-                        lp.getPelicula().setStockVenta(lp.getPelicula().getStockVenta()-lp.getCantidad());
+                        lp.getTorta().setStockVenta(lp.getTorta().getStockVenta()-lp.getCantidad());
                     }
                     
                     for(LineaPedido lp2: p.getLineas())
                     {
-                        if(lp.getPelicula().getIdPelicula()==lp2.getPelicula().getIdPelicula())
+                        if(lp.getTorta().getIdTorta()==lp2.getTorta().getIdTorta())
                         {
-                            lp2.getPelicula().setStockAlquiler(lp.getPelicula().getStockAlquiler());
-                            lp2.getPelicula().setStockVenta(lp.getPelicula().getStockVenta());
+                            lp2.getTorta().setStockAlquiler(lp.getTorta().getStockAlquiler());
+                            lp2.getTorta().setStockVenta(lp.getTorta().getStockVenta());
                         }
                     }
                    
-                    CatalogoDePeliculas CdPeli=new CatalogoDePeliculas();
+                    CatalogoDeTortas CdPeli=new CatalogoDeTortas();
                     try
                     {
-                        CdPeli.actualizarStock(lp.getPelicula());
+                        CdPeli.actualizarStock(lp.getTorta());
                     }
                     catch(AefilepException ex)
                     {

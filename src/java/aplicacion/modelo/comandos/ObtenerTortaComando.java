@@ -5,8 +5,8 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.entidades.Torta;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import aplicacion.utilidades.AefilepException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,23 +15,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-public class ObtenerPeliculaComando extends Comando
+public class ObtenerTortaComando extends Comando
 {
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        CatalogoDePeliculas CdP= new CatalogoDePeliculas();
+        CatalogoDeTortas CdP= new CatalogoDeTortas();
         try
         {
-            Pelicula peliActual= CdP.obtenerPelicula(Integer.parseInt(request.getParameter("idPelicula")));
-            request.getSession().setAttribute("peliActual", peliActual);  
+            Torta tortaActual= CdP.obtenerTorta(Integer.parseInt(request.getParameter("idTorta")));
+            request.getSession().setAttribute("tortaActual", tortaActual);  
         }
         catch(AefilepException ex)
         {
-            request.getSession().setAttribute("peliActual", null);
+            request.getSession().setAttribute("tortaActual", null);
             request.setAttribute("ex", ex.getMessage());
         }
         
-        return "/pelicula.jsp";            
+        return "/torta.jsp";            
     }    
 }

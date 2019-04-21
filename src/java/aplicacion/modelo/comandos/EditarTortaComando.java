@@ -6,9 +6,9 @@
 package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Variedad;
-import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.entidades.Torta;
 import aplicacion.modelo.negocio.CatalogoDeVariedades;
-import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.modelo.negocio.CatalogoDeTortas;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -23,17 +23,17 @@ import javax.servlet.http.Part;
  *
  * @author JP
  */
-public class EditarPeliculaComando extends Comando
+public class EditarTortaComando extends Comando
 {
-    CatalogoDePeliculas CdeP;
+    CatalogoDeTortas CdeP;
     CatalogoDeVariedades CdeV;
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        CdeP = new CatalogoDePeliculas();
+        CdeP = new CatalogoDeTortas();
         CdeV = new CatalogoDeVariedades();
-        Pelicula PeliEditada = new Pelicula();
+        Torta PeliEditada = new Torta();
         ArrayList<Variedad> variedades = null;
         try
         {
@@ -42,10 +42,10 @@ public class EditarPeliculaComando extends Comando
         catch (Exception ex) 
         {
             request.setAttribute("ex",ex.getMessage());
-            return ("/ABMPeliculas.jsp");
+            return ("/ABMTortas.jsp");
         }
         
-        PeliEditada.setIdPelicula(Integer.parseInt(request.getParameter("ID")));
+        PeliEditada.setIdTorta(Integer.parseInt(request.getParameter("ID")));
         PeliEditada.setFormato(request.getParameter("formPel"));
         PeliEditada.setNombre(request.getParameter("nomPel"));
         PeliEditada.setDuracion(Integer.parseInt(request.getParameter("durPel")));
@@ -76,7 +76,7 @@ public class EditarPeliculaComando extends Comando
         catch (IOException | ServletException ex)
         {       
             request.setAttribute("ex",ex.getMessage());
-            return ("/ABMPeliculas.jsp");
+            return ("/ABMTortas.jsp");
         }
         
         SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
@@ -89,7 +89,7 @@ public class EditarPeliculaComando extends Comando
         catch(Exception ex)
         {
             request.setAttribute("ex","Ha ocurrido un error");
-            return ("/ABMPeliculas.jsp");
+            return ("/ABMTortas.jsp");
         }
         
         String selecc[] = request.getParameterValues("variedades");
@@ -105,23 +105,23 @@ public class EditarPeliculaComando extends Comando
         Boolean esActivo = (request.getParameter("Activa")!=null);
         PeliEditada.setActivo(esActivo);
         
-        ArrayList<Pelicula> peliculas;
+        ArrayList<Torta> tortas;
         try
         {
-            CdeP.actualizarPelicula(PeliEditada);
-            peliculas = CdeP.obtenerPeliculas();          
+            CdeP.actualizarTorta(PeliEditada);
+            tortas = CdeP.obtenerTortas();          
         }
         catch(Exception ex)
         {
             request.setAttribute("ex",ex.getMessage());
-            return "/ABMPeliculas.jsp";
+            return "/ABMTortas.jsp";
         }
         
-        request.getSession().setAttribute("ListaPeliculas", peliculas);
+        request.getSession().setAttribute("ListaTortas", tortas);
         request.getSession().setAttribute("PeliEdit", PeliEditada);
         request.getSession().setAttribute("Scroll",true);
         request.setAttribute("ExitoPeli", true);
          
-        return "/ABMPeliculas.jsp";
+        return "/ABMTortas.jsp";
     }    
 }

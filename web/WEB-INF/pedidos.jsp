@@ -41,7 +41,7 @@
                                             <th>ID Pedido</th>
                                             <th>F Desde</th>
                                             <th>F Hasta</th>
-                                            <th>Peliculas</th>
+                                            <th>Tortas</th>
                                             <th>Recargo</th>
                                             <th>Estado</th>
                                         </tr>

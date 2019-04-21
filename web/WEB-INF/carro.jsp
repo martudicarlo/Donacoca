@@ -63,14 +63,14 @@
                             %>
                                 <tr>
                                     <td class="cart_product">
-                                        <img src="ProcesadorImagenes?id=<%=lp.getPelicula().getIdPelicula()%>" class="imagenCarro" alt="">
+                                        <img src="ProcesadorImagenes?id=<%=lp.getTorta().getIdTorta()%>" class="imagenCarro" alt="">
                                     </td>
                                     <td class="cart_description">
-                                        <h4><%=lp.getPelicula().getNombre()%></h4>                                                                                                                                                                          
-                                        <h5>ID producto: <%=lp.getPelicula().getIdPelicula()%></h5>
+                                        <h4><%=lp.getTorta().getNombre()%></h4>                                                                                                                                                                          
+                                        <h5>ID producto: <%=lp.getTorta().getIdTorta()%></h5>
                                     </td>
                                     <td class="cart_price">
-                                        <h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioAlquiler())%></h5>                                                                                                                                             
+                                        <h5>$ <%=String.format("%.2f",lp.getTorta().getPrecioAlquiler())%></h5>                                                                                                                                             
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
@@ -86,7 +86,7 @@
                                     <td class="cart_delete">
                                         <form action="Controlador" method="post">
                                             <input type="hidden"  name="form" value="EliminarLineaComando"/>
-                                            <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
+                                            <input type="hidden" name="idTorta" value="<%=lp.getTorta().getIdTorta()%>"/>
                                             <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
                                             <button class="cart_quantity_delete" type="submit"><i class="fa fa-times"></i></button>
                                         </form>
@@ -120,20 +120,20 @@
                                 if(!lp.isEsAlquiler()){ %>
                                 <tr>
                                     <td class="cart_product">
-                                        <img src="ProcesadorImagenes?id=<%=lp.getPelicula().getIdPelicula()%>" class="imagenCarro" alt="">
+                                        <img src="ProcesadorImagenes?id=<%=lp.getTorta().getIdTorta()%>" class="imagenCarro" alt="">
                                     </td>
                                     <td class="cart_description">
-                                        <h4><%=lp.getPelicula().getNombre()%></h4>
-                                        <h5>ID producto: <%=lp.getPelicula().getIdPelicula()%></h5>
+                                        <h4><%=lp.getTorta().getNombre()%></h4>
+                                        <h5>ID producto: <%=lp.getTorta().getIdTorta()%></h5>
                                     </td>
                                     <td class="cart_price">
-                                        <h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioVenta())%></h5>
+                                        <h5>$ <%=String.format("%.2f",lp.getTorta().getPrecioVenta())%></h5>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="ActualizarLineaComando"/>
-                                                <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
+                                                <input type="hidden" name="idTorta" value="<%=lp.getTorta().getIdTorta()%>"/>
                                                 <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
                                                 <input onchange="submit()" min="1" class="tamanio cart_quantity_input"type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
                                             </form>
@@ -148,7 +148,7 @@
                                     <td class="cart_delete">
                                         <form action="Controlador" method="post">
                                             <input type="hidden"  name="form" value="EliminarLineaComando"/>
-                                            <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
+                                            <input type="hidden" name="idTorta" value="<%=lp.getTorta().getIdTorta()%>"/>
                                             <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
                                             <button class="cart_quantity_delete" type="submit"><i class="fa fa-times"></i></button>
                                         </form>
@@ -166,7 +166,7 @@
                         LineaPedido lpe= ped.getLineas().get((Integer)session.getAttribute("errorStock"));
                     %> 
                         <div class="alert alert-danger">
-                            Stock insuficiente en la pelicula <%=lpe.getPelicula().getNombre()%> para <%if(lpe.isEsAlquiler()){%>alquiler<%}else{%>compra<%}%>
+                            Stock insuficiente en la torta <%=lpe.getTorta().getNombre()%> para <%if(lpe.isEsAlquiler()){%>alquiler<%}else{%>compra<%}%>
                         </div>
                     </div>
                     <% session.setAttribute("errorStock", null);}
