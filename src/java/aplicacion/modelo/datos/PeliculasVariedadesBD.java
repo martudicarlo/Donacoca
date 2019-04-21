@@ -5,7 +5,7 @@
  */
 package aplicacion.modelo.datos;
 
-import aplicacion.modelo.entidades.Genero;
+import aplicacion.modelo.entidades.Variedad;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author marti_000
  */
-public class PeliculasGenerosBD
+public class PeliculasVariedadesBD
 {
     Conexion conec = new Conexion();
 
@@ -27,16 +27,16 @@ public class PeliculasGenerosBD
      * @param p
      * @throws AefilepException 
      */
-    public void agregarPeliculaGeneros(Pelicula p) throws AefilepException
+    public void agregarPeliculaVariedad(Pelicula p) throws AefilepException
     {
         Connection con = conec.getConexion();
-        String transac = "insert into aefilep.peliculas_generos values ";
+        String transac = "insert into aefilep.peliculas_variedades values ";
         
-        for(int i=0; i<p.getGeneros().size(); i++)
+        for(int i=0; i<p.getVariedades().size(); i++)
         {
-            transac = transac +"("+p.getIdPelicula()+","+p.getGeneros().get(i).getIdGenero()+")";
+            transac = transac +"("+p.getIdPelicula()+","+p.getVariedades().get(i).getIdVariedad()+")";
             
-            if(i==p.getGeneros().size()-1)            
+            if(i==p.getVariedades().size()-1)            
                 transac = transac+";";
             else            
                 transac = transac+",";            
@@ -55,14 +55,14 @@ public class PeliculasGenerosBD
     }
     
     /**
-     * elimina y agrega los generos de una pelicula
+     * elimina y agrega las variedades de una pelicula
      * @param p pelicula a editar
      * @throws AefilepException 
      */ 
-    public void actualizarPeliculasGeneros(Pelicula p) throws AefilepException
+    public void actualizarPeliculasVariedades(Pelicula p) throws AefilepException
     {
         Connection con = conec.getConexion();
-        String transac = "delete from aefilep.peliculas_generos where id_pelicula=?;";
+        String transac = "delete from aefilep.peliculas_variedades where id_pelicula=?;";
         
         try
         {   
@@ -72,7 +72,7 @@ public class PeliculasGenerosBD
             
             con.close();
             
-            this.agregarPeliculaGeneros(p);
+            this.agregarPeliculaVariedad(p);
         }
         catch(SQLException ex)
         {
@@ -80,12 +80,12 @@ public class PeliculasGenerosBD
         }
     }
      
-    public ArrayList<Genero> obtenerGenerosPelicula(int id) throws AefilepException
+    public ArrayList<Variedad> obtenerVariedadesPelicula(int id) throws AefilepException
     {
-        ArrayList<Genero> generos = new ArrayList<Genero>();
+        ArrayList<Variedad> variedades = new ArrayList<Variedad>();
         Connection con = conec.getConexion();
-        String transac = "SELECT aefilep.generos.id_genero, descripcion FROM aefilep.peliculas_generos inner join aefilep.generos " +
-                         "on aefilep.peliculas_generos.id_genero=aefilep.generos.id_genero " +
+        String transac = "SELECT aefilep.variedades.id_variedad, descripcion FROM aefilep.peliculas_variedades inner join aefilep.variedades " +
+                         "on aefilep.peliculas_variedades.id_variedad=aefilep.variedades.id_variedad " +
                          "where id_pelicula=?;";
         try
         {   
@@ -95,10 +95,10 @@ public class PeliculasGenerosBD
             ResultSet res = pr.executeQuery();
             while(res.next())
             {
-                Genero gen = new Genero();
-                gen.setIdGenero(res.getInt(1));
-                gen.setDescripcion(res.getString(2));
-                generos.add(gen);
+                Variedad var = new Variedad();
+                var.setIdVariedad(res.getInt(1));
+                var.setDescripcion(res.getString(2));
+                variedades.add(var);
             }
             con.close(); 
         }
@@ -107,6 +107,6 @@ public class PeliculasGenerosBD
             throw(new AefilepException ("Error al obtener géneros de la película",ex));
         }
         
-        return generos;
+        return variedades;
     }
 }

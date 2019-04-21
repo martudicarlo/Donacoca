@@ -5,9 +5,9 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.entidades.Genero;
+import aplicacion.modelo.entidades.Variedad;
 import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.negocio.CatalogoDeGeneros;
+import aplicacion.modelo.negocio.CatalogoDeVariedades;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,18 +26,18 @@ import javax.servlet.http.Part;
 public class EditarPeliculaComando extends Comando
 {
     CatalogoDePeliculas CdeP;
-    CatalogoDeGeneros CdeG;
+    CatalogoDeVariedades CdeV;
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         CdeP = new CatalogoDePeliculas();
-        CdeG = new CatalogoDeGeneros();
+        CdeV = new CatalogoDeVariedades();
         Pelicula PeliEditada = new Pelicula();
-        ArrayList<Genero> generos = null;
+        ArrayList<Variedad> variedades = null;
         try
         {
-            generos = CdeG.obtenerGeneros();
+            variedades = CdeV.obtenerVariedad();
         } 
         catch (Exception ex) 
         {
@@ -92,13 +92,13 @@ public class EditarPeliculaComando extends Comando
             return ("/ABMPeliculas.jsp");
         }
         
-        String selecc[] = request.getParameterValues("generos");
-        for(Genero g: generos)
+        String selecc[] = request.getParameterValues("variedades");
+        for(Variedad v: variedades)
         {
             for(int i=0; i<selecc.length;i++)                  
             {
-                if(g.getIdGenero()==Integer.parseInt(selecc[i]))               
-                    PeliEditada.agregarGenero(g);
+                if(v.getIdVariedad()==Integer.parseInt(selecc[i]))               
+                    PeliEditada.agregarVariedad(v);
             }
         }
         

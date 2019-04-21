@@ -9,25 +9,25 @@ package aplicacion.modelo.entidades;
  *
  * @author JP
  */
-public class Genero
+public class Variedad
 {
-    private int idGenero;
+    private int idVariedad;
     private String descripcion;
 
     /**
-     * @return the idGenero
+     * @return the idVariedad
      */
-    public int getIdGenero()
+    public int getIdVariedad()
     {
-        return idGenero;
+        return idVariedad;
     }
 
     /**
-     * @param idGenero the idGenero to set
+     * @param idVariedad the idVariedad to set
      */
-    public void setIdGenero(int idGenero)
+    public void setIdVariedad(int idVariedad)
     {
-        this.idGenero = idGenero;
+        this.idVariedad = idVariedad;
     }
 
     /**

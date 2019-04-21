@@ -70,7 +70,7 @@ public class PeliculasComando extends Comando
                     
                     if(listaPeliculas.isEmpty())
                         request.getSession().setAttribute("errorNoEncontradas",true);
-                    request.getSession().setAttribute("generoObtenido",true);
+                    request.getSession().setAttribute("variedadObtenida",true);
                 }
                 else if(request.getSession().getAttribute("tipo").equals("todas"))
                 { 
@@ -79,9 +79,9 @@ public class PeliculasComando extends Comando
                 }
                 else
                 {
-                    listaPeliculas = cDp.obtenerGenero((Integer)request.getSession().getAttribute("tipo"),(paginaActual-1)*9,9);
-                    request.getSession().setAttribute("generoObtenido",true);
-                    cantidadDePeliculas=cDp.cantidadGenerosActivos((Integer)request.getSession().getAttribute("tipo"));
+                    listaPeliculas = cDp.obtenerVariedad((Integer)request.getSession().getAttribute("tipo"),(paginaActual-1)*9,9);
+                    request.getSession().setAttribute("variedadObtenida",true);
+                    cantidadDePeliculas=cDp.cantidadVariedadesActivas((Integer)request.getSession().getAttribute("tipo"));
                 }
             }
         }
@@ -93,7 +93,7 @@ public class PeliculasComando extends Comando
      
         request.getSession().setAttribute("listaCartelera", listaPeliculas);
         request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
-        request.getSession().setAttribute("generoObtenido", null);
+        request.getSession().setAttribute("VariedadObtenida", null);
         
         return "/cartelera.jsp";       
     }

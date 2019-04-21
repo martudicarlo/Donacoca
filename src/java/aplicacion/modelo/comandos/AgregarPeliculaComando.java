@@ -5,9 +5,9 @@
  */
 package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.entidades.Genero;
+import aplicacion.modelo.entidades.Variedad;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
-import aplicacion.modelo.negocio.CatalogoDeGeneros;
+import aplicacion.modelo.negocio.CatalogoDeVariedades;
 import aplicacion.utilidades.AefilepException;
 import java.io.InputStream;
 import java.text.DateFormat;
@@ -25,7 +25,7 @@ public class AgregarPeliculaComando extends Comando
 {
     Pelicula pelicula;
     CatalogoDePeliculas cDp= new CatalogoDePeliculas();
-    CatalogoDeGeneros cdG = new CatalogoDeGeneros();
+    CatalogoDeVariedades cdV = new CatalogoDeVariedades();
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
@@ -59,16 +59,16 @@ public class AgregarPeliculaComando extends Comando
         Date hoy=new Date();
         hoyFormato.format(hoy);
         pelicula.setFechaCarga(hoy);
-        //Comparo todos los generos con los seleccionados y los agrego a la película
-        ArrayList<Genero> generos = (ArrayList)request.getSession().getAttribute("ListaGeneros");
-        String selecc[] = request.getParameterValues("generos");
-        for(Genero g: generos)
+        //Comparo todos las variedades con los seleccionados y los agrego a la película
+        ArrayList<Variedad> variedades = (ArrayList)request.getSession().getAttribute("ListaVariedades");
+        String selecc[] = request.getParameterValues("variedades");
+        for(Variedad v: variedades)
         {
             for(int i=0; i<selecc.length;i++)  
             {
-                if(g.getIdGenero()==Integer.parseInt(selecc[i]))
+                if(v.getIdVariedad()==Integer.parseInt(selecc[i]))
                 {
-                    pelicula.agregarGenero(g);
+                    pelicula.agregarVariedad(v);
                 }
             }
         }    

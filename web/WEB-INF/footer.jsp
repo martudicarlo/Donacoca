@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-sm-2">
                     <div class="single-widget">
-                        <h2>Películas</h2>                            
+                        <h2>Tortas</h2>                            
                         <form action="Controlador" method="post">                                                             
                             <input type="hidden" name="form" value="PeliculasComando" >
                             <ul class="nav nav-pills nav-stacked">                                                                  
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-sm-2 colFooter">
-                    <div class="single-widget listaGenerosFooter">
+                    <div class="single-widget listaVariedadesFooter">
                         <form action="Controlador" method="post">                               
                             <input type="hidden" name="form" value="PeliculasComando" >
                             <ul class="nav nav-pills nav-stacked">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="col-sm-2 colFooter">
-                    <div class="single-widget listaGenerosFooter">
+                    <div class="single-widget listaVariedadesFooter">
                         <form action="Controlador" method="post" >                               
                             <input type="hidden" name="form" value="PeliculasComando" >
                             <ul class="nav nav-pills nav-stacked">

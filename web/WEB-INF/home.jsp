@@ -40,7 +40,7 @@
                             for(Pelicula pc: pelisCarrusel){ %>
                                 <div class="item <%if(indice==1){%>active<%}%>">
                                     <div class="col-sm-6">
-                                        <h1><span>A</span>efilep - Video Club</h1>
+                                        <h1><span>D</span>oña Coca - Pastelería</h1>
                                         <h2><%=pc.getNombre()%></h2>
                                         <p><%=pc.getSinopsis(150)%>...</p>
                                         <form action="Controlador" method="post">
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <img src="ProcesadorImagenes?id=<%=pc.getIdPelicula()%>" class="imagenCarrusel img-responsive" alt="">
-                                        <img src="./imagenes/pricing.png" class="pricing" alt="">
+                                        <img src="./imagenes/new.png" class="pricing" alt="">
                                     </div>
                                 </div>
                             <%indice++;}%>                                    
@@ -67,6 +67,7 @@
                 </div>
             </div>
         </section><!--/slider-->
+       
         <section>
             <div class="container">
                 <div class="row">
@@ -74,7 +75,7 @@
                         <div class="left-sidebar">
                             <h2>Publicidad</h2>
                             <div class="shipping text-center"><!--shipping-->
-                                <img src="./imagenes/popcorn-time.png" alt="publicidad" class="publicidad">
+                                <img src="./imagenes/publicidad ilolay.png" alt="publicidad" class="publicidad">
                             </div><!--/shipping-->
                         </div>
                     </div>

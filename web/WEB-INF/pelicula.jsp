@@ -1,5 +1,5 @@
-<%@page import="aplicacion.modelo.negocio.CatalogoDeGeneros"%>
-<%@page import="aplicacion.modelo.entidades.Genero"%>
+<%@page import="aplicacion.modelo.negocio.CatalogoDeVariedades"%>
+<%@page import="aplicacion.modelo.entidades.Variedad"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="aplicacion.modelo.entidades.Pelicula"%>
 <html>
@@ -9,20 +9,20 @@
     <body>
         <jsp:include page="header.jsp"/>
         <%Pelicula peliActual=(Pelicula)session.getAttribute("peliActual"); 
-          ArrayList<Genero> listaGeneros = (ArrayList)session.getAttribute("generos");%>
+          ArrayList<Variedad> listaVariedades = (ArrayList)session.getAttribute("variedades");%>
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="left-sidebar">
-                            <h2>Géneros</h2>
+                            <h2>Variedades</h2>
                             <div class="category-products">
                                 <form action="Controlador" method="post" >
                                     <input type="hidden" name="form" value="PeliculasComando" >
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
-                                        <% for(Genero g : listaGeneros){%>
-                                        <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="<%=g.getIdGenero()%>" name="tipo"><%=g.getDescripcion()%></label></li>
+                                        <li><label class="etiquetaVariedad"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
+                                        <% for(Variedad v : listaVariedades){%>
+                                        <li><label class="etiquetaVariedad"><input onclick="submit()" type="radio" value="<%=v.getIdVariedad()%>" name="tipo"><%=v.getDescripcion()%></label></li>
                                         <%}%>                                                                                        
                                     </ul>
                                 </form>

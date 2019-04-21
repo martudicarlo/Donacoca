@@ -32,12 +32,12 @@ public class Pelicula
     private float precioAlquiler;
     private int anio;
     private boolean estreno;
-    private ArrayList<Genero> generos;
+    private ArrayList<Variedad> variedades;
     private InputStream imagen;
     
     public Pelicula()
     {
-        this.generos = new ArrayList<Genero>();
+        this.variedades = new ArrayList<Variedad>();
     }
     
     public InputStream getImagen() 
@@ -50,29 +50,29 @@ public class Pelicula
         this.imagen = imagen;
     }
    
-    public ArrayList<Genero> getGeneros()
+    public ArrayList<Variedad> getVariedades()
     {
-        return generos;
+        return variedades;
     }
 
-    public void setGeneros(ArrayList<Genero> generos)
+    public void setVariedades(ArrayList<Variedad> variedades)
     {
-        this.generos = generos;
+        this.variedades = variedades;
     }
     
-    public boolean contieneGenero(Genero gen)
+    public boolean contieneVariedad(Variedad var)
     {
-        for(Genero g:generos)
+        for(Variedad v:variedades)
         {
-            if(g.getIdGenero()==gen.getIdGenero())
+            if(v.getIdVariedad()==var.getIdVariedad())
                 return true;
         }
         return false;
     }
     
-    public void agregarGenero(Genero genero)
+    public void agregarVariedad(Variedad variedad)
     {
-        this.generos.add(genero);
+        this.variedades.add(variedad);
     }
     
     //private String imagen;

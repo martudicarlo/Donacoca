@@ -78,9 +78,9 @@ public class CatalogoDePeliculas
         return peliculas.cantidadBuscadorActivos(nombre);
     }
     
-    public int cantidadGenerosActivos(int id) throws AefilepException
+    public int cantidadVariedadesActivas(int id) throws AefilepException
     {
-        return peliculas.cantidadGenerosActivos(id);
+        return peliculas.cantidadVariedadesActivas(id);
     }
     
     public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad) throws AefilepException
@@ -93,8 +93,8 @@ public class CatalogoDePeliculas
         return peliculas.obtenerEstrenos(cant);
     }
     
-    public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws AefilepException
+    public ArrayList<Pelicula> obtenerVariedad(int idVariedad, int inferior, int cantidad) throws AefilepException
     {
-        return peliculas.obtenerGenero(idGenero,inferior,cantidad);
+        return peliculas.obtenerVariedad(idVariedad,inferior,cantidad);
     }
 }

@@ -5,7 +5,7 @@
  */
 package aplicacion.modelo.datos;
 
-import aplicacion.modelo.entidades.Genero;
+import aplicacion.modelo.entidades.Variedad;
 import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,38 +17,38 @@ import java.util.ArrayList;
  *
  * @author Alumno
  */
-public class GeneroBD 
+public class VariedadBD 
 {
     Conexion conec = new Conexion();
-    public ArrayList<Genero> obtenerGeneros() throws AefilepException 
+    public ArrayList<Variedad> obtenerVariedades() throws AefilepException 
     {
-        ArrayList<Genero> listaGeneros = new ArrayList<>();
+        ArrayList<Variedad> listaVariedades = new ArrayList<>();
         try
         {
             Connection con = conec.getConexion();
-            String transac = "select * from generos;";
+            String transac = "select * from variedades;";
            
                 PreparedStatement pr = con.prepareStatement(transac);
                 ResultSet res = pr.executeQuery();
                 
                 while(res.next())
                 {
-                    Genero g = new Genero();
+                    Variedad g = new Variedad();
                     
-                    g.setIdGenero(res.getInt(1));
+                    g.setIdVariedad(res.getInt(1));
                     g.setDescripcion(res.getString(2));
                     
-                    listaGeneros.add(g);
+                    listaVariedades.add(g);
                 }
                 con.close();
                 
         }
         catch(SQLException ex)
         {
-            throw new AefilepException("Error al recuperar el genero",ex);
+            throw new AefilepException("Error al recuperar la variedad",ex);
         }
                    
-        return listaGeneros;
+        return listaVariedades;
     }        
 }
 

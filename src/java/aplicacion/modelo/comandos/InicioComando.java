@@ -5,12 +5,12 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.entidades.Genero;
+import aplicacion.modelo.entidades.Variedad;
 import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Usuario;
-import aplicacion.modelo.negocio.CatalogoDeGeneros;
+import aplicacion.modelo.negocio.CatalogoDeVariedades;
 import aplicacion.modelo.negocio.CatalogoDeParametros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
@@ -42,11 +42,11 @@ public class InicioComando extends Comando{
 
         try
         {       
-            listaPeliculas.add(CdP.obtenerGenero(6, 0, 4));
-            listaPeliculas.add(CdP.obtenerGenero(3, 0, 4));
-            listaPeliculas.add(CdP.obtenerGenero(1, 0, 4));
-            listaPeliculas.add(CdP.obtenerGenero(2, 0, 4));
-            listaPeliculas.add(CdP.obtenerGenero(5, 0, 4));
+            listaPeliculas.add(CdP.obtenerVariedad(6, 0, 4));
+            listaPeliculas.add(CdP.obtenerVariedad(3, 0, 4));
+            listaPeliculas.add(CdP.obtenerVariedad(1, 0, 4));
+            listaPeliculas.add(CdP.obtenerVariedad(2, 0, 4));
+            listaPeliculas.add(CdP.obtenerVariedad(5, 0, 4));
             pelisCarrusel= CdP.obtenerEstrenos(3);    
         }
         catch(AefilepException ex)
@@ -58,11 +58,11 @@ public class InicioComando extends Comando{
         request.getSession().setAttribute("pelisCarrusel", pelisCarrusel);
         
         //carga de géneros
-        CatalogoDeGeneros cDeGen = new CatalogoDeGeneros();
+        CatalogoDeVariedades cDeVar = new CatalogoDeVariedades();
         try
         {
-            ArrayList<Genero> generos = cDeGen.obtenerGeneros();
-            request.getSession().setAttribute("generos", generos);
+            ArrayList<Variedad> variedades = cDeVar.obtenerVariedad();
+            request.getSession().setAttribute("variedades", variedades);
         }
         catch(AefilepException ex)
         {

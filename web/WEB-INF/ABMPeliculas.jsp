@@ -1,10 +1,6 @@
-<%-- 
-    Document   : ABMPeliculas
-    Created on : 04/07/2016, 11:20:39
-    Author     : JP
---%>
+
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
-<%@page import="aplicacion.modelo.entidades.Genero"%>
+<%@page import="aplicacion.modelo.entidades.Variedad"%>
 <%@page import="aplicacion.modelo.entidades.Pelicula"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -13,12 +9,12 @@
     <body onload="scrollDiv()">
         <jsp:include page="header.jsp"/>
         <%!ArrayList<Pelicula> peliculas;%>
-        <%!ArrayList<Genero> generos;%>
+        <%!ArrayList<Variedad> variedades;%>
         <%!Parametro param;%>
         <%!Pelicula peli;%>
         <% if(session.getAttribute("parametros")!=null){ param = (Parametro) session.getAttribute("parametros"); }%>
         <% if(session.getAttribute("ListaPeliculas")!=null) { peliculas = (ArrayList)session.getAttribute("ListaPeliculas");}%>
-        <% if(session.getAttribute("ListaGeneros")!=null) { generos = (ArrayList)session.getAttribute("ListaGeneros");}%>
+        <% if(session.getAttribute("ListaVariedades")!=null) { veriedades = (ArrayList)session.getAttribute("ListaVariedades");}%>
         <% peli = (Pelicula)session.getAttribute("PeliEdit"); 
             if(request.getAttribute("peliculaPorAgregar")!=null)        
                 peli = (Pelicula)request.getAttribute("peliculaPorAgregar");  
@@ -208,15 +204,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                <h4 class="text-left">Géneros</h4>
+                                <h4 class="text-left">Variedades</h4>
 
                                     <div class="table-responsive" style="height:120px; overflow:auto;">
                                         <table class="table-striped col-lg-12">
                                             <tbody>
-                                            <% for(int i=0;i<generos.size();i++){%>
+                                            <% for(int i=0;i<veriedades.size();i++){%>
                                                 <tr>
                                                     <td>
-                                                        <label class="puntero"><input class="check" type="checkbox" name="generos" value="<%=generos.get(i).getIdGenero()%>" <%if((peli!=null || request.getAttribute("peliculaPorAgregar")!=null) && peli.contieneGenero(generos.get(i)))%>checked<%;%>><%=generos.get(i).getDescripcion()%></label>
+                                                        <label class="puntero"><input class="check" type="checkbox" name="variedades" value="<%=variedades.get(i).getIdVariedad()%>" <%if((peli!=null || request.getAttribute("peliculaPorAgregar")!=null) && peli.contieneVariedad(variedad.get(i)))%>checked<%;%>><%=variedades.get(i).getDescripcion()%></label>
                                                     </td>
                                                 </tr>
                                                 <%}%>

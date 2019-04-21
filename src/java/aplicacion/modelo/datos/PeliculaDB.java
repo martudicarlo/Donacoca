@@ -60,7 +60,7 @@ public class PeliculaDB
                 p.setIdPelicula(id);
             }
             
-            new PeliculasGenerosBD().agregarPeliculaGeneros(p);
+            new PeliculasVariedadesBD().agregarPeliculaVariedad(p);
             con.close();
         }
         catch(SQLException ex)
@@ -119,7 +119,7 @@ public class PeliculaDB
                 pr.setBlob(12, p.getImagen());            
                 pr.setInt(13, p.getIdPelicula());
                 
-                new PeliculasGenerosBD().actualizarPeliculasGeneros(p);
+                new PeliculasVariedadesBD().actualizarPeliculasVariedades(p);
                 pr.executeUpdate();
 
                 con.close();
@@ -151,7 +151,7 @@ public class PeliculaDB
                 pr.setInt(11, p.getAnio());           
                 pr.setInt(12, p.getIdPelicula());
                 
-                new PeliculasGenerosBD().actualizarPeliculasGeneros(p);
+                new PeliculasVariedadesBD().actualizarPeliculasVariedades(p);
                 pr.executeUpdate();
            
                 con.close();
@@ -224,7 +224,7 @@ public class PeliculaDB
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 }
 
-                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
                 listaPeliculas.add(p);
             }
             con.close();
@@ -275,7 +275,7 @@ public class PeliculaDB
                 {
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 }
-                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
 
                 listaPeliculas.add(p);
             }
@@ -489,10 +489,10 @@ public class PeliculaDB
         return i;
     }
      
-    public int cantidadGenerosActivos(int id) throws AefilepException
+    public int cantidadVariedadesActivas(int id) throws AefilepException
     {
         int i=0;
-        String transac = "select count(*) from peliculas p inner join peliculas_generos pg on p.id_pelicula=pg.id_pelicula where id_genero=? and activo=1;";
+        String transac = "select count(*) from peliculas p inner join peliculas_variedades pg on p.id_pelicula=pg.id_pelicula where id_variedad=? and activo=1;";
         
         try
         {
@@ -575,7 +575,7 @@ public class PeliculaDB
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
 
                 
-                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
                 
                 listaEstrenos.add(p);
             }
@@ -624,7 +624,7 @@ public class PeliculaDB
                 else
                     p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 
-                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
                 
                 listaEstrenos.add(p);
             }
@@ -669,7 +669,7 @@ public class PeliculaDB
                     else
                         p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
 
-                    p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
+                    p.setVariedades(new PeliculasVariedadesBD().obtenerVariedadesPelicula(p.getIdPelicula()));
                     listaEstrenos.add(p);                  
                 }
                 con.close();
@@ -683,16 +683,16 @@ public class PeliculaDB
         return listaEstrenos;
     }
     
-    public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws AefilepException
+    public ArrayList<Pelicula> obtenerVariedad(int idVariedad, int inferior, int cantidad) throws AefilepException
     {
-        ArrayList<Pelicula> listaGenero = new ArrayList<>();
-        String transac = "select p.id_pelicula from peliculas_generos pg inner join peliculas p on pg.id_pelicula=p.id_pelicula where pg.id_genero=? and p.activo=1 limit ?,?";
+        ArrayList<Pelicula> listaVariedad = new ArrayList<>();
+        String transac = "select p.id_pelicula from peliculas_variedades pg inner join peliculas p on pg.id_pelicula=p.id_pelicula where pg.id_variedad=? and p.activo=1 limit ?,?";
         
         try
         {
             con = conec.getConexion();
             PreparedStatement pr = con.prepareStatement(transac);
-            pr.setInt(1, idGenero);
+            pr.setInt(1, idVariedad);
             pr.setInt(2, inferior);
             pr.setInt(3,cantidad);
             ResultSet res = pr.executeQuery();
@@ -702,7 +702,7 @@ public class PeliculaDB
                 Pelicula p = obtenerPelicula(res.getInt(1));
                 if(p!=null)
                 {               
-                    listaGenero.add(p);
+                    listaVariedad.add(p);
                 }
             }
             con.close();
@@ -711,6 +711,6 @@ public class PeliculaDB
         {
             throw new AefilepException("Error al recuperar películas",ex);
         }         
-        return listaGenero;
+        return listaVariedad;
     }
 }

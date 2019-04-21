@@ -5,8 +5,8 @@
  */
 package aplicacion.modelo.negocio;
 
-import aplicacion.modelo.entidades.Genero;
-import aplicacion.modelo.datos.GeneroBD;
+import aplicacion.modelo.entidades.Variedad;
+import aplicacion.modelo.datos.VariedadBD;
 import aplicacion.utilidades.AefilepException;
 import java.util.ArrayList;
 
@@ -15,12 +15,12 @@ import java.util.ArrayList;
  * @author Alumno
  */
 
-public class CatalogoDeGeneros 
+public class CatalogoDeVariedades 
 {
-    GeneroBD generosBD = new GeneroBD();  
+    VariedadBD VariedadBD = new VariedadBD();  
     
-    public ArrayList<Genero> obtenerGeneros() throws AefilepException
+    public ArrayList<Variedad> obtenerVariedad() throws AefilepException
     {
-        return generosBD.obtenerGeneros();
+        return VariedadBD.obtenerVariedades();
     }    
 }
