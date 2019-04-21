@@ -144,8 +144,8 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">Copyright © 2016 Aefilep Inc. Todos los derechos reservados.</p>
-                <p class="pull-right">Diseñado por <span>Aefilep Team</span></p>
+                <p class="pull-left">Copyright © 2019 Doña Coca Inc. Todos los derechos reservados.</p>
+                <p class="pull-right">Diseñado por <span>DoñaCoca Team</span></p>
             </div>
         </div>
     </div>

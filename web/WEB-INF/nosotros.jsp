@@ -9,11 +9,11 @@
                         <div class="col-sm-12">    			   						  			    				    				
                             <div id="gmap">
                                 <center>
-                                    <p> Aefilep abrió sus puertas en 1994 para brindar el mejor servicio a sus socios. Quienes formamos parte del </p>
-                                    <p> videoclub buscamos no sólo satisfacer a quienes nos acompañan día a día con la posibilidad de que puedan acceder al </p>
-                                    <p>alquiler/compra de nuestras películas, sino también, lograr que cada vez sean más los que confíen en Aefilep a la hora de hacer</p>
-                                    <p>sus elecciones, porque de esta manera nosotros también crecemos.</p>
-                                    <p>Aefilep no es sólo nosotros, somos todos.</p>
+                                    <p> Doña Coca comenzó a trabajar en el 2014 brindando productos de pastelería a la ciudad de Reconquista. </p>
+                                    <p> Luego, decidimos dar el salto geográfico tambien a la ciudad de Rosario, donde nuestras pasteleras transcurren </p>
+                                    <p>una importante parte de sus vidas. Es por eso que hoy en día contamos con el acompañamiento de 100 consumidores mensuales</p>
+                                    <p>de nuestros productos..</p>
+                                    <p>Doña Coca es una gran familia formada por 3 pasteleras que se dedican full time a mejorar la calidad de los productos que hacemos.</p>
                                 </center>
                                 <br>                                        
                             </div>
@@ -21,7 +21,7 @@
                     </div>  
                     <div class="row">
                         <div class="col-sm-12">  	
-                            <img class="img-responsive" alt="aefilep" src="imagenes/nosotros.JPG"/>
+                            <img class="img-responsive" alt="pasteleras" src="imagenes/pasteleras.jpg"/>
                             <br/>				
                         </div>
                     </div>              

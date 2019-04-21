@@ -17,10 +17,9 @@
                 <div class="col-sm-12">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="https://www.facebook.com/Aefilep-1323307154365122/?fref=ts"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/donacoca.pasteleria/"><i class="fa fa-instagram"></i></a></li>
+                             <li><a href="#"><i class="fa fa-pinterest"></i></a></li>  
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>                                            
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         </ul>
                     </div>
@@ -37,7 +36,7 @@
                         <form action="Controlador" method="post" class="formLogo">
                             <input type="hidden"  name="form" value="RedireccionarComando"/>
                             <input type="hidden"  name="destino" value="/home.jsp"/>
-                            <img src="./imagenes/doña-coca22.jpg" onclick="submit()">
+                            <img src="./imagenes/doñacocavol2.jpg" onclick="submit()">
                         </form>
                    </div>               
                 </div>
