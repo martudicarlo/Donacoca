@@ -106,7 +106,7 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr class="cart_menu colorTablaCompra">
-                                    <td class="image">Película</td>
+                                    <td class="image">Tortaa</td>
                                     <td class="description">Descripción</td>
                                     <td class="price">Precio</td>
                                     <td class="quantity">Cantidad</td>

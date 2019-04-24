@@ -100,7 +100,7 @@ public class TortaDB
         { 
             String sql = "update tortas set nombre=? , duracion=? , formato=? ,"
                 + " stock_alquiler=? ,stock_compra=?, reparto=?, activo=?,url_trailer=? ,"
-                + " precio_venta=?, sinopsis=?, anio=?, imagen=? where id_torta=?";            
+                + " precio_venta=?, descripcion=?, anio=?, imagen=? where id_torta=?";            
             try
             {
                 con = conec.getConexion();
@@ -133,7 +133,7 @@ public class TortaDB
         {
             String sql = "update tortas set nombre=? , duracion=? , formato=? ,"
                 + " stock_alquiler=? ,stock_compra=?, reparto=?, activo=?,url_trailer=? ,"
-                + " precio_venta=?, sinopsis=?, anio=? where id_torta=?";
+                + " precio_venta=?, descripcion=?, anio=? where id_torta=?";
             try
             {
                 con = conec.getConexion();

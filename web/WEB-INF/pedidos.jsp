@@ -54,7 +54,7 @@
                                             <td><%= p.getFechaHasta() %></td>
                                             <td>
                                             <% for(LineaPedido lp: p.getLineas()){
-                                            if(lp.isEsAlquiler()){%>Alquiler<%}else{%>Compra<%}%> - <%=lp.getPelicula().getNombre()%><br>                                          
+                                            if(lp.isEsAlquiler()){%>Alquiler<%}else{%>Compra<%}%> - <%=lp.getTorta().getNombre()%><br>                                          
                                             <%}%> 
                                             </td>
                                             <td>$ <%= p.getRecargo()%></td>

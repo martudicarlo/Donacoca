@@ -18,7 +18,7 @@ import javax.servlet.http.Part;
 public class Torta 
 {
     private int idTorta;
-    private String sinopsis;
+    private String descripcion;
     private String nombre;
     private int duracion;
     private String formato;
@@ -118,26 +118,26 @@ public class Torta
     }
 
     /**
-     * @return the sinopsis
+     * @return the descripcion
      */
     public String getSinopsis() 
     {
-        return sinopsis;
+        return descripcion;
     }
      
     public String getSinopsis(int cant)
     {        
-        if(sinopsis.length()<150)
-            return sinopsis;         
-        return sinopsis.substring(0, cant);      
+        if(descripcion.length()<150)
+            return descripcion;         
+        return descripcion.substring(0, cant);      
     }
 
     /**
-     * @param sinopsis the sinopsis to set
+     * @param descripcion the descripcion to set
      */
-    public void setSinopsis(String sinopsis) 
+    public void setSinopsis(String descripcion) 
     {
-        this.sinopsis = sinopsis;
+        this.descripcion = descripcion;
     }
 
     /**

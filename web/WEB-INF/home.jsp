@@ -71,23 +71,18 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="left-sidebar">
-                            <h2>Publicidad</h2>
-                            <div class="shipping text-center"><!--shipping-->
-                                <img src="./imagenes/publicidad ilolay.png" alt="publicidad" class="publicidad">
-                            </div><!--/shipping-->
-                        </div>
-                    </div>
+                    
+                    
+                    
                     <div class="col-sm-9 padding-right">
                         <div class="category-tab"><!--category-tab-->
                             <div class="col-sm-12">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#comedia" data-toggle="tab">Comedia</a></li>
-                                    <li><a href="#drama" data-toggle="tab">Drama</a></li>
-                                    <li><a href="#terror" data-toggle="tab">Terror</a></li>
-                                    <li><a href="#accion" data-toggle="tab">Acción</a></li>
-                                    <li><a href="#thriller" data-toggle="tab">Thriller</a></li>
+                                    <li class="active"><a href="#infantiles" data-toggle="tab">Infantiles</a></li>
+                                    <li><a href="#quince" data-toggle="tab">Quince</a></li>
+                                    <li><a href="#casamientos" data-toggle="tab">Casamientos</a></li>
+                                    <li><a href="#bautismos" data-toggle="tab">Bautismos</a></li>
+                                    <li><a href="#frutales" data-toggle="tab">Frutales</a></li>
                                 </ul>
                             </div>
                             <div class="tab-content">

@@ -1,14 +1,14 @@
 <%@page import="aplicacion.modelo.negocio.CatalogoDeVariedades"%>
 <%@page import="aplicacion.modelo.entidades.Variedad"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="aplicacion.modelo.entidades.Pelicula"%>
+<%@page import="aplicacion.modelo.entidades.Torta"%>
 <html>
     <head>
         <jsp:include page="head.jsp"/>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <%Pelicula tortaActual=(Pelicula)session.getAttribute("tortaActual"); 
+        <%Torta tortaActual=(Torta)session.getAttribute("tortaActual"); 
           ArrayList<Variedad> listaVariedades = (ArrayList)session.getAttribute("variedades");%>
         <section>
             <div class="container">
@@ -33,7 +33,7 @@
                         <div class="product-details"><!--product-details-->
                             <div class="col-sm-5">                                   
                                 <div class="productinfo">
-                                    <img class="imagenPelicula" src="ProcesadorImagenes?id=<%=tortaActual.getIdPelicula()%>" alt="<%=tortaActual.getNombre()%>">
+                                    <img class="imagenTorta" src="ProcesadorImagenes?id=<%=tortaActual.getIdTorta()%>" alt="<%=tortaActual.getNombre()%>">
                                 </div>
                             </div>
                             <div class="col-sm-7">
@@ -50,17 +50,17 @@
                                     <p><b>Sinopsis: </b><%=tortaActual.getSinopsis()%></p>
                                     <form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="AgregarLineaComando"/>
-                                        <input type="hidden" name="idPelicula" value="<%=tortaActual.getIdPelicula()%>"/>
-                                        <input type="hidden" name="provieneDePelicula" value="true">
+                                        <input type="hidden" name="idTorta" value="<%=tortaActual.getIdTorta()%>"/>
+                                        <input type="hidden" name="provieneDeTorta" value="true">
                                         <span>
                                             <span class="precios">Alquiler $<%=String.format("%.2f",tortaActual.getPrecioAlquiler())%></span>
-                                            <button type="submit" class="btn btn-fefault cart botonPelicula"  name="tipoLinea" value="Alquilar">
+                                            <button type="submit" class="btn btn-fefault cart botonTorta"  name="tipoLinea" value="Alquilar">
                                                 <i class="fa fa-shopping-cart"></i> Alquilar
                                             </button>
                                         </span>                                      
                                         <span>
                                             <span class="precios">Compra $<%=String.format("%.2f",tortaActual.getPrecioVenta())%></span>
-                                            <button type="submit" class="btn btn-fefault cart botonPelicula"  name="tipoLinea" value="Comprar">
+                                            <button type="submit" class="btn btn-fefault cart botonTorta"  name="tipoLinea" value="Comprar">
                                                 <i class="fa fa-shopping-cart"></i> Comprar
                                             </button>
                                         </span>                                           
