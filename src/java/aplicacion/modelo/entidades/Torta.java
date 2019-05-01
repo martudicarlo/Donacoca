@@ -120,12 +120,12 @@ public class Torta
     /**
      * @return the descripcion
      */
-    public String getSinopsis() 
+    public String getDescripcion() 
     {
         return descripcion;
     }
      
-    public String getSinopsis(int cant)
+    public String getDescripcion(int cant)
     {        
         if(descripcion.length()<150)
             return descripcion;         
@@ -135,7 +135,7 @@ public class Torta
     /**
      * @param descripcion the descripcion to set
      */
-    public void setSinopsis(String descripcion) 
+    public void setDescripcion(String descripcion) 
     {
         this.descripcion = descripcion;
     }

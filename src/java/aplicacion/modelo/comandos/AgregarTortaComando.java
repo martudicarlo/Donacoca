@@ -50,7 +50,7 @@ public class AgregarTortaComando extends Comando
         torta.setDuracion(Integer.parseInt(request.getParameter("durPel")));
         torta.setPrecioVenta(Float.parseFloat(request.getParameter("pvtaPel")));
         torta.setReparto(request.getParameter("repPel"));
-        torta.setSinopsis(request.getParameter("sinPel"));
+        torta.setDescripcion(request.getParameter("sinPel"));
         torta.setStockAlquiler(Integer.parseInt(request.getParameter("stockAlqPel")));
         torta.setStockVenta(Integer.parseInt(request.getParameter("stockVtaPel")));
         torta.setUrlTrailer(request.getParameter("urlPel"));

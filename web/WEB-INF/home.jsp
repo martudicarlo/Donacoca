@@ -42,7 +42,7 @@
                                     <div class="col-sm-6">
                                         <h1><span>D</span>oña Coca - Pastelería</h1>
                                         <h2><%=pc.getNombre()%></h2>
-                                        <p><%=pc.getSinopsis(150)%>...</p>
+                                        <p><%=pc.getDescripcion(150)%>...</p>
                                         <form action="Controlador" method="post">
                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
                                             <input type="hidden"  name="form" value="ObtenerTortaComando"/>

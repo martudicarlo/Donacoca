@@ -51,7 +51,7 @@ public class EditarTortaComando extends Comando
         PeliEditada.setDuracion(Integer.parseInt(request.getParameter("durPel")));
         PeliEditada.setPrecioVenta(Float.parseFloat(request.getParameter("pvtaPel")));
         PeliEditada.setReparto(request.getParameter("repPel"));
-        PeliEditada.setSinopsis(request.getParameter("sinPel"));
+        PeliEditada.setDescripcion(request.getParameter("sinPel"));
         PeliEditada.setStockAlquiler(Integer.parseInt(request.getParameter("stockAlqPel")));
         PeliEditada.setStockVenta(Integer.parseInt(request.getParameter("stockVtaPel")));
         PeliEditada.setUrlTrailer(request.getParameter("urlPel"));

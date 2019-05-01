@@ -49,7 +49,7 @@ public class TortaDB
             pr.setBoolean(10,p.isActivo());
             pr.setString(11, p.getUrlTrailer());
             pr.setFloat(12, p.getPrecioVenta());
-            pr.setString(13, p.getSinopsis());
+            pr.setString(13, p.getDescripcion());
             pr.setInt(14, p.getAnio());
             pr.executeUpdate();
             ResultSet rs = pr.getGeneratedKeys();
@@ -114,7 +114,7 @@ public class TortaDB
                 pr.setBoolean(7, p.isActivo());            
                 pr.setString(8, p.getUrlTrailer());
                 pr.setFloat(9, p.getPrecioVenta());
-                pr.setString(10, p.getSinopsis());
+                pr.setString(10, p.getDescripcion());
                 pr.setInt(11, p.getAnio());           
                 pr.setBlob(12, p.getImagen());            
                 pr.setInt(13, p.getIdTorta());
@@ -147,7 +147,7 @@ public class TortaDB
                 pr.setBoolean(7, p.isActivo());            
                 pr.setString(8, p.getUrlTrailer());
                 pr.setFloat(9, p.getPrecioVenta());
-                pr.setString(10, p.getSinopsis());
+                pr.setString(10, p.getDescripcion());
                 pr.setInt(11, p.getAnio());           
                 pr.setInt(12, p.getIdTorta());
                 
@@ -212,7 +212,7 @@ public class TortaDB
                 p.setActivo(res.getBoolean(10));
                 p.setUrlTrailer(res.getString(11));
                 p.setPrecioVenta(res.getFloat(12));
-                p.setSinopsis(res.getString(13));
+                p.setDescripcion(res.getString(13));
                 p.setAnio(res.getInt(14));
 
                 if(p.isEstreno())
@@ -264,7 +264,7 @@ public class TortaDB
                 p.setActivo(res.getBoolean(10));
                 p.setUrlTrailer(res.getString(11));
                 p.setPrecioVenta(res.getFloat(12));
-                p.setSinopsis(res.getString(13));
+                p.setDescripcion(res.getString(13));
                 p.setAnio(res.getInt(14));
 
                 if(p.isEstreno())
@@ -319,7 +319,7 @@ public class TortaDB
                 p.setActivo(res.getBoolean(10));
                 p.setUrlTrailer(res.getString(11));
                 p.setPrecioVenta(res.getFloat(12));
-                p.setSinopsis(res.getString(13));
+                p.setDescripcion(res.getString(13));
                 p.setAnio(res.getInt(14));
                 
                 if(p.isEstreno())
@@ -364,7 +364,7 @@ public class TortaDB
                 p.setActivo(res.getBoolean(10));
                 p.setUrlTrailer(res.getString(11));
                 p.setPrecioVenta(res.getFloat(12));
-                p.setSinopsis(res.getString(13));
+                p.setDescripcion(res.getString(13));
                 p.setAnio(res.getInt(14));  
             
                 if(p.isEstreno())
@@ -566,7 +566,7 @@ public class TortaDB
                 p.setActivo(res.getBoolean(10));
                 p.setUrlTrailer(res.getString(11));
                 p.setPrecioVenta(res.getFloat(12));
-                p.setSinopsis(res.getString(13));
+                p.setDescripcion(res.getString(13));
                 p.setAnio(res.getInt(14));
                 
                 if(p.isEstreno())
@@ -616,7 +616,7 @@ public class TortaDB
                 p.setActivo(res.getBoolean(10));
                 p.setUrlTrailer(res.getString(11));
                 p.setPrecioVenta(res.getFloat(12));
-                p.setSinopsis(res.getString(13));
+                p.setDescripcion(res.getString(13));
                 p.setAnio(res.getInt(14));
                 
                 if(p.isEstreno())
@@ -661,7 +661,7 @@ public class TortaDB
                     p.setActivo(res2.getBoolean(10));
                     p.setUrlTrailer(res2.getString(11));
                     p.setPrecioVenta(res2.getFloat(12));
-                    p.setSinopsis(res2.getString(13));
+                    p.setDescripcion(res2.getString(13));
                     p.setAnio(res2.getInt(14));
                      
                     if(p.isEstreno())
